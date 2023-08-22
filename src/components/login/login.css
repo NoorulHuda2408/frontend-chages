@@ -1,0 +1,20 @@
+.form-control  {
+    border-radius: 30px !important;
+}
+
+.Label{
+    color: #000;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.checkBox{
+    color: #000;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}

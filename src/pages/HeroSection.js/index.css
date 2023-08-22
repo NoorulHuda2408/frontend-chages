@@ -1,0 +1,42 @@
+.headings{
+    color: #F48C06;
+font-family: Poppins;
+font-size: 54px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.heading1Para{
+color:black;
+font-family: Nunito Sans;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; /* 38.4px */
+}
+.heading1Para1{
+    color:#FFFFFF;
+font-family: Nunito Sans;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 160%; /* 38.4px */
+}
+.dasLoginButtonHero{
+    /* background-color:green; */
+    /* background-color:  #49BBBD !important; */
+background: rgb(33 112 113 / 60%) !important;
+  box-shadow: 0px 20px 24px 0px rgba(0, 0, 0, 0.03);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    border-color: transparent;
+    color:#FFFFFF !important;
+    
+}
+.HeroSection{
+    background-color:  #49BBBD !important;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);
+}

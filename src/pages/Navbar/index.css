@@ -1,0 +1,36 @@
+.dasLoginButton{
+/* background-color:rgba(255, 255, 255, 0.30); */
+border-radius: 20px;
+/* padding: 10px,10px !important; */
+padding-left: 24px;
+ padding-right: 24px;
+ border-radius: 80px;
+/* background: rgba(255, 255, 255, 0.30); */
+box-shadow: 0px 20px 24px 0px rgba(0, 0, 0, 0.03);
+border-color: transparent;
+
+
+
+}
+.dasSignButton{
+    /* background-color:green; */
+    /* background-color:  #49BBBD !important; */
+    background: rgb(33 112 113 / 60%) !important;
+  box-shadow: 0px 20px 24px 0px rgba(0, 0, 0, 0.03);
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 20px;
+    border-color: transparent;
+    color:#FFFFFF !important;
+    
+}
+.NavbarSection{
+    /* background-color:transparent; */
+    background-color:  #49BBBD !important;
+}
+.NavbarA{
+    background-color:transparent;
+}
+.NavItems{
+    color:#FFFFFF !important;
+}

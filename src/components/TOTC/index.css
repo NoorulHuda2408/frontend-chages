@@ -1,0 +1,66 @@
+
+.TOTCHeading{
+    color: #2F327D;
+text-align: center;
+font-family: Poppins;
+font-size: 44px;
+font-style: normal;
+font-weight: 600;
+line-height: 180%; /* 79.2px */
+}
+.totc1{
+background-image: url("../../assests/totc.svg") ;
+height: 40vh;
+width: 100vw;
+background-size: cover; /* Adjusts the size to cover the entire element */
+background-position: center; /* Centers the image within the element */
+background-repeat: no-repeat;
+border-radius: 20px;
+}
+.totc2{
+background-image: url("../../assests/totc2.svg") ;
+height: 40vh;
+width: 100vw;
+background-size: cover; /* Adjusts the size to cover the entire element */
+background-position: center; /* Centers the image within the element */
+background-repeat: no-repeat;
+
+}
+
+.CLassButton{background: rgb(33 112 113 / 60%) !important;
+  box-shadow: 0px 20px 24px 0px rgba(0, 0, 0, 0.03);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+    border-color: transparent;
+    color:#FFFFFF !important;}
+
+.classHeading{
+    color: #FFF;
+text-align: center;
+font-family: Poppins;
+font-size: 32px;
+font-style: normal;
+font-weight: 600;
+
+}
+.studentHeading{
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    
+}
+.TOTCHeadingPara{
+    color: #696984;
+text-align: center;
+font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+letter-spacing: 0.48px;
+}
