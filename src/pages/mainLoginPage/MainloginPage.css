@@ -28,4 +28,9 @@ margin-right: 30px; */
    background-color: rgba(73, 187, 189, 0.60);
    border-radius: 20px
 }
+.login_Wrapper{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
 

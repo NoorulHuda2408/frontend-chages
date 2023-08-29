@@ -6,8 +6,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./index.css"
 import Button from 'react-bootstrap/esm/Button';
 import logo from"../../assests/logo.svg"
+import {useNavigate} from 'react-router-dom'
 
 const NavbarCustom = () => {
+  const navigate = useNavigate();
   return (
     <div className='container-fluid NavbarSection '>  
     <Navbar expand="lg" className="NavbarA " >
@@ -45,8 +47,8 @@ const NavbarCustom = () => {
             </Nav.Item>
           </Nav> */}
           <div className="NavbarButton  d-flex justify-content-between ms-md-5">
-         <button type="button" className="dasLoginButton ms-md-5" >Login </button>
-         <button type="button" className="dasSignButton ms-md-3" >Sign Up</button>
+         <button onClick={()=>{navigate("/login")}} type="button" className="dasLoginButton ms-md-5" >Login </button>
+         <button onClick={()=>{navigate("/login")}} type="button" className="dasSignButton ms-md-3" >Sign Up</button>
 
           </div>
         </Nav>
