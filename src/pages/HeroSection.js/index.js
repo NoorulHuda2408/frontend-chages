@@ -9,7 +9,7 @@ const index = () => {
         <div className='HeroSection-container  row  align-items-center   '>
             <div className='col-md-6 col-sm-12  align-items-center mt-md-5'>
             <h1 className='heading1 mt-2'><span style={{color:"#F48C06"}}>Studying</span> Online is now much easier</h1>
-            <p className='heading1Para1 mt-2  '>TOTC is an interesting platform that will teach<br/> you in more an interactive way</p>
+            <p className='heading1Para1 mt-2  '>Tuition Recommender is an interesting platform that will teach<br/> you in more an interactive way</p>
             <div className='HeroSectionButton d-flex align-items-center mt-3 '>
              <div>
             <button type="button" className="dasLoginButtonHero ms-1 " >Join for free</button>

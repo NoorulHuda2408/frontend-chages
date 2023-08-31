@@ -20,7 +20,7 @@ font-weight: 400;
         -webkit-text-fill-color: transparent;
     
     font-family: Buenos Aires Trial;
-    font-size: 50px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 300;
     line-height: 100%; /* 96px */
@@ -28,7 +28,7 @@ font-weight: 400;
      .successNumbersValue{
         color: var(--half-dark-text-color, rgba(1, 5, 20, 0.80));
         font-family: Buenos Aires Trial;
-        font-size: 32px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 400;
      }

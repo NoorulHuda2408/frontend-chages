@@ -11,8 +11,7 @@ const Assesment = () => {
             </div>
             <div className='col-sm-12 col-md-6 d-flex flex-column align-items-center justify-content-center '>
                 <h1 className="AssesmentHeading"> Assessments, <br/><span style={{color:"#00CBB8"}}>Quizzes</span>, Tests</h1>
-                <p1 className="AssesmentPara">Class has a dynamic set of teaching tools built to be deployed and used during class.<br/>
-            Teachers can handout assignments in real-time for students to complete and submit.</p1>
+                <p1 className="AssesmentPara"> Parents and students can effortlessly monitor their journey through real-time access to quiz and assignment marks. Stay up-to-date with achievements and areas primed for improvement.</p1>
 
             </div>
         
