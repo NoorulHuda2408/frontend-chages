@@ -1,0 +1,99 @@
+.card-main {
+  border-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
+  color: #d9ecff !important;
+  background: #ebebeb !important;
+  box-shadow: 4px 7px 26px 0px rgba(0, 0, 0, 0.12) !important;
+  border-top: 4px solid #49bbbd !important;
+  flex-wrap: wrap;
+}
+
+.card-img {
+  width: 80% !important;
+  margin-left: 1rem;
+  border-radius: 150px !important;
+}
+.card3-body {
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
+}
+
+.btn-common {
+  background-color: rgb(0, 203, 184) !important;
+  border: 1px solid #49bbbd !important;
+  color: #fff;
+  border-radius: 9px;
+  text-align: center;
+  font-size: 14px;
+  padding: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.btn-common:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5) !important;
+  background-color: rgb(0, 203, 184) !important;
+  border: 1px solid #49bbbd !important;
+}
+
+.Sub-h3 {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32.5px; /* 125% */
+}
+.sub-name {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32.5px;
+}
+.btn-contain {
+  display: block;
+}
+.btn-12 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.btn-1 {
+  margin-left: 5.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .btn-contain {
+    display: block;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-1 {
+    margin-left: 2rem;
+    margin-top: 2rem;
+  }
+  .btn-hi {
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-img {
+    width: 60% !important;
+    border-radius: 100% !important;
+    margin-left: 8rem;
+  }
+  .btn-contain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-1 {
+    margin-left: 1rem;
+    margin-top: 1.5rem;
+  }
+  .btn-hi {
+    margin-left: 1rem;
+  }
+}

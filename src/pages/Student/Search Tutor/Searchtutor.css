@@ -1,0 +1,59 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+  padding: 0px;
+}
+.search-main {
+  border-radius: 20px;
+  border: solid 1px #d2d2d2;
+  font-size: 16px;
+}
+
+.p1 {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.searchbtn {
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  background: #49bbbd;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 43px;
+  color: #fff;
+}
+
+.searchbtn:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: #49bbbd;
+  transform: scale(1.05);
+}
+
+/* Class for Select */
+.css-13cymwt-control {
+  border: none !important;
+  outline: 0 !important;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: #ebebeb !important;
+  cursor: pointer !important;
+}
+.css-qbdosj-Input,
+.css-1fdsijx-ValueContainer {
+  cursor: pointer;
+  margin: 0px !important;
+}
+.css-13cymwt-control:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: #fff !important;
+  border: 1px solid #49bbbd !important;
+  border-radius: 2.5px !important;
+  cursor: pointer !important;
+}
