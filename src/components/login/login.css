@@ -17,4 +17,55 @@ font-size: 12px;
 font-style: normal;
 font-weight: 300;
 line-height: normal;
+align-items: center;
 }
+.forget-p {
+    color: #4d7cfe;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px; /* 128.571% */
+  }
+  
+  .rember-label {
+    color: #778ca2;
+    text-align: center !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px; /* 128.571% */
+    display: flex !important;
+    align-items: center;
+  }
+  
+  input[type="checkbox"] {
+    width: 20px; 
+    height: 20px; 
+    margin-left: 12px;
+    border-radius: 12px !important;
+  }
+
+.sign-btn {
+    display: block;
+    margin: 40px auto;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 45px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #49bbbd;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .sign-btn:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+    background-color: #49bbbd;
+    transform: scale(1.05);
+  }
+
+  .forget-p:hover {
+    transform: scale(1.05);
+  }

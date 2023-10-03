@@ -1,0 +1,229 @@
+.profile,
+.content {
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.main-w2 {
+  /* background-color: #bbdbdc; */
+  min-height: 100vh;
+  /* margin-top: 0px; */
+}
+.profile {
+  /* position: absolute; */
+  top: 100px;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+  margin: 30px auto;
+  margin-bottom: 100px;
+  background-color: #fff;
+  border-top: 5px solid #49bbbd;
+  border-bottom: 5px solid #49bbbd;
+  border-radius: 12px;
+  box-shadow: 0 2.5px 5px #ccc;
+}
+.content {
+  /* position: absolute; */
+  min-height: 100%;
+  height: 100%;
+  width: 95%;
+  margin: 2.5% auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+label {
+  color: #555;
+  line-height: 2.1em;
+}
+label[for="avatar"] {
+  line-height: 120px;
+}
+.btn {
+  top: 45%;
+  left: 25%;
+  padding: 10px 15px;
+  border-radius: 3px !important;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+  cursor: pointer !important;
+  transition: 0.5s ease !important;
+  background-color: #f7f7f7 !important;
+}
+.btn:hover {
+  border-color: #49bbbd;
+  background-color: #fff !important;
+}
+
+/*Input Fields Styles
+  =========================*/
+fieldset textarea,
+input {
+  font-family: Open Sans;
+  font-size: 15px;
+  color: #333;
+  background-color: #f7f7f7;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+  padding: 12px;
+  width: 75%;
+  margin: 5px auto;
+  border: none;
+  border-radius: 2.5px;
+  outline: 0;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+fieldset textarea {
+  min-height: 40px;
+  max-height: 60px;
+}
+
+fieldset textarea:hover,
+input:hover,
+select:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 1px solid #49bbbd !important;
+  border-radius: 2.5px;
+}
+
+textarea:focus,
+select:focus,
+input:focus {
+  background-color: #def0f0 !important;
+  border-color: #49bbbd !important;
+  box-shadow: inset 0 2px 5px -1px rgba(0, 0, 0, 0.25) !important;
+}
+
+.grid-35 {
+  width: 35%;
+  float: left;
+  font-weight: 500;
+  color: #333;
+}
+.grid-65 {
+  position: relative;
+  width: 65%;
+  float: right;
+  font-family: Source Sans Pro;
+  font-weight: 300;
+  font-size: 17px;
+}
+.grid-75-input {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  margin-right: 8px;
+}
+
+.grid-75 {
+  font-family: Source Sans Pro;
+  font-weight: 300;
+  font-size: 17px;
+  display: flex;
+  margin-left: 3.75rem;
+}
+
+/* Edit View
+  ======================*/
+.content h1 {
+  text-align: center;
+  color: #555;
+  font-family: Lato;
+  font-size: 40px;
+  font-weight: 200;
+  margin: 5px auto 15px auto;
+}
+
+select {
+  width: 75% !important;
+  padding: 10px 10px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  outline: 0;
+  color: #333;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+}
+select option {
+  padding: 3px;
+  font-size: 15px;
+  color: #333;
+  background-color: #f5f5f5;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+}
+
+fieldset {
+  text-align: center;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border: 2px solid #e3e3e3;
+  padding: 25px 0px !important;
+}
+
+fieldset:last-child {
+  border-bottom: none;
+}
+
+.Btn {
+  width: 38%;
+  float: left;
+  display: block;
+  margin: 40px auto;
+  margin-left: 10%;
+  padding: 15px 0;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #49bbbd;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+.Btn:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: #49bbbd;
+  transform: scale(1.05);
+}
+
+.selectize-dropdown-content {
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: inherit;
+  visibility: visible;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 200px;
+  padding: 5px 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+}
+/*Media Queries
+  =========================*/
+@media only screen and (min-width: 768px) {
+  /*Desktop*/
+  .profile {
+    width: 700px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /*Tablet*/
+  .profile {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 520px) {
+  /*Phone*/
+  .profile {
+    width: 90%;
+  }
+}

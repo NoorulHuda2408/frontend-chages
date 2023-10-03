@@ -20,24 +20,36 @@ const NavbarCustom = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
-          <Nav.Link href="#home" className='ms-md-5 NavItems'>Home</Nav.Link>
+          <Nav.Link href="#home" className='ms-md-5 NavItems' onClick={() => {navigate("/")}}>Home</Nav.Link>
           <Nav.Link href="#link" className='ms-md-3 NavItems'>Courses</Nav.Link>
           <Nav.Link href="#home" className='ms-md-3 NavItems'>Careers</Nav.Link>
           <Nav.Link href="#link" className='ms-md-3 NavItems'>Blogs</Nav.Link>
           <Nav.Link href="#link" className='ms-md-3 NavItems'>About Us</Nav.Link>
+      
 
-
-          {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
+          <NavDropdown title="Teacher" id="basic-nav-dropdown" className='navbar-drop'> 
+            <NavDropdown.Item href="#action/3.1" onClick={() => {navigate("/teacherprofile")}}>Create Profile</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2" onClick={() => {navigate("/Notification")}}>
+              Notification
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item href="#action/3.3" onClick={() => {navigate("/StudentResult")}}>Upload Result</NavDropdown.Item>
+        
+            {/* <NavDropdown.Item href="#action/3.4">
               Separated link
+            </NavDropdown.Item> */}
+          </NavDropdown>
+
+          <NavDropdown title="Student" id="basic-nav-dropdown" className='navbar-drop'> 
+            <NavDropdown.Item  onClick={() => {navigate("/StudentRegistration")}}>Create Student Profile</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => {navigate("/Searchtutor")}}>
+              Search Tutor
             </NavDropdown.Item>
-          </NavDropdown> */}
+            {/* <NavDropdown.Item href="" onClick={() => {navigate("/StudentResult")}}>Upload Result</NavDropdown.Item> */}
+        
+            {/* <NavDropdown.Item href="#action/3.4">
+              Separated link
+            </NavDropdown.Item> */}
+          </NavDropdown>
             {/* <Nav variant="pills" className="flex-row   border">
             <Nav.Item  >
               <Nav.Link eventKey="first" >Sign in</Nav.Link>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "../Navbar"
+import Navbar from "../../components/Navbar/index";
 import HeroSection from "../HeroSection.js"
 // import MainloginPage from "./mainLoginPage/MainloginPage"; 
 import Success from "../../components/Success/Success"
