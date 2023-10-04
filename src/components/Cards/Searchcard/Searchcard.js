@@ -8,7 +8,10 @@ import subject from "../../../assests/Card/stack-of-books.png";
 import clock from "../../../assests/Card/clock.png";
 import gender from "../../../assests/Card/male-and-female.png";
 import name from "../../../assests/Card/user.png";
+import {useNavigate} from 'react-router-dom'
+
 export default function Card1() {
+  const navigate = useNavigate();
   return (
     <Card className="card-main  mt-4">
       <Card.Body className="card3-body">
@@ -17,7 +20,7 @@ export default function Card1() {
             <img src={cardimg} alt="card-img" className="card-img " />
             <div className="btn-contain"> 
             <div className="mt-4 btn-12">
-              <button className="btn-common btn-fr">Further Details</button>
+              <button className="btn-common btn-fr"  onClick={() => {navigate("/Packages")}}>Further Details</button>
               <button className="btn-common btn-hi">Hire Tutor</button>
             </div>
 

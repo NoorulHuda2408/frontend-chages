@@ -37,7 +37,7 @@ export default function StudentResult() {
       <Container fluid className="Main-w pb-5">
         <div className="main-1">
           <Row className="justify-content-center align-items-center Form-main">
-            <h1 className="upload-h1">Upload Result</h1>
+            <h1 className="upload-h1">Upload Progress & Notes</h1>
 
             <form>
               <div className="mt-4">
@@ -61,6 +61,10 @@ export default function StudentResult() {
                     type="tel"
                     placeholder="Enter Phone No"
                     name="mobile"
+                    onInput={(e) => {
+                      // Remove any non-numeric characters from the input
+                      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    }}
                   />
                 </div>
               </div>
@@ -133,16 +137,14 @@ export default function StudentResult() {
                 </Row>
               </div>
               <div className="mt-4">
-                <label className="label-form required-label">
-                  Additional Information
-                </label>
+                <label className="label-form required-label">Feedback</label>
                 <div className="inputdiv">
                   <textarea
                     className="myTextarea"
                     id="myTextarea"
                     rows="4"
                     cols="50"
-                    placeholder="Enter Detail Progress"
+                    placeholder="Feedback"
                   ></textarea>
                 </div>
               </div>
@@ -150,6 +152,20 @@ export default function StudentResult() {
                 <label className="label-form required-label">Date</label>
                 <div className="inputdiv">
                   <input type="date" placeholder="dd-mm-yyyy" name="date" />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <label className="label-form required-label">
+                  Upload Notes
+                </label>
+                <div className="inputdiv">
+                  <input
+                    type="file"
+                    id="documentInput"
+                    name="document"
+                    accept=".pdf, .doc, .docx"
+                  />
                 </div>
               </div>
 
