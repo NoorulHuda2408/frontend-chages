@@ -1,0 +1,31 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.main-section {
+  color: #fff !important;
+  background: #49bbbd;
+  box-shadow: 4px 7px 26px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+.modal-content {
+  border-radius: 35px !important;
+  border-bottom: 1px solid #49bbbd;
+  font-size: 16px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.modal-header {
+  border-radius: 35px 35px 0 0 !important;
+  text-align: center !important;
+}
+
+.label-p {
+  font-weight: 600;
+}

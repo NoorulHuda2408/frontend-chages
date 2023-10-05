@@ -29,11 +29,10 @@ export default function Viewprogress() {
           <h1 className="h1-pro">Progress Report</h1>
         </Row>
         <Row className="mt-4 mb-3">
-           <Col lg={12} md={12}>
-                  <Procard/>
-           </Col>
+          <Col lg={12} md={12}>
+            <Procard />
+          </Col>
         </Row>
-       
       </Container>
     </>
   );

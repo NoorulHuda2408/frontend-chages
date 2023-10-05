@@ -10,6 +10,7 @@ import StudentRegister from "./pages/Student/Profile/Register";
 import Searchtutor from './pages/Student/Search Tutor/Searchtutor';
 import Packages from "./pages/Student/Packages/Packages";
 import ViewProgress from "./pages/Student/View Result/Viewprogress";
+
 function App() {
   return (
     <div className="App">
@@ -25,6 +26,8 @@ function App() {
          <Route exact path="/Searchtutor" element={<Searchtutor />} />
          <Route exact path="/Packages" element={<Packages />} />
          <Route exact path="/ViewProgress" element={<ViewProgress />} />
+       
+        
     </Routes>
 </Router>
 

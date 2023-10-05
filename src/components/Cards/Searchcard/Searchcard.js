@@ -8,36 +8,42 @@ import subject from "../../../assests/Card/stack-of-books.png";
 import clock from "../../../assests/Card/clock.png";
 import gender from "../../../assests/Card/male-and-female.png";
 import name from "../../../assests/Card/user.png";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export default function Card1() {
   const navigate = useNavigate();
   return (
-    <Card className="card-main  mt-4">
+    <Card className="card-main-s  mt-4">
       <Card.Body className="card3-body">
         <Row>
           <Col lg={3}>
             <img src={cardimg} alt="card-img" className="card-img " />
-            <div className="btn-contain"> 
-            <div className="mt-4 btn-12">
-              <button className="btn-common btn-fr"  onClick={() => {navigate("/Packages")}}>Further Details</button>
-              <button className="btn-common btn-hi">Hire Tutor</button>
-            </div>
+            <div className="btn-contain">
+              <div className="mt-4 btn-12">
+                <button
+                  className="btn-common btn-fr"
+                  onClick={() => {
+                    navigate("/Packages");
+                  }}
+                >
+                  Packages
+                </button>
+                <button className="btn-common btn-hi">Hire Tutor</button>
+              </div>
 
-            <div className="btn-1">
-              <button className="btn-common ">Chat With Tutor</button>
+              <div className="btn-1">
+                <button className="btn-common ">Chat With Tutor</button>
+              </div>
             </div>
-            </div>
-           
           </Col>
-          <Col lg={9} >
+          <Col lg={9}>
             <div className="d-flex align-items-center mt-3 ">
-            <img src={name} width="30px" className=" " />
+              <img src={name} width="30px" className=" " />
               <h3 className="Sub-h3 ms-2">Name : </h3>
               <p className="sub-name ms-3">Alisbha</p>
             </div>
             <div className="d-flex align-items-center mt-3 ">
-            <img src={gender} width="30px" className="mt-1 " />
+              <img src={gender} width="30px" className="mt-1 " />
               <h3 className="Sub-h3 ms-2">Gender : </h3>
               <p className="sub-name ms-3">Female</p>
             </div>
@@ -52,13 +58,11 @@ export default function Card1() {
             <div className="d-flex align-items-start mt-3 ">
               <img src={subject} width="30px" className="mt-1" />
               <h3 className="Sub-h3 ms-2">Subjects: </h3>
-              <p className="sub-name ms-3">
-                Biology, Chemistry
-              </p>
+              <p className="sub-name ms-3">Biology, Chemistry</p>
             </div>
 
             <div className="d-flex align-items-start mt-3 ">
-              <img src={location} width="25px" className="mt-1"/>
+              <img src={location} width="25px" className="mt-1" />
               <h3 className="Sub-h3 ms-2">Area/Location: </h3>
               <p className="sub-name ms-3">Rawalpindi</p>
             </div>
@@ -68,13 +72,12 @@ export default function Card1() {
               <p className="sub-name ms-3">N/A</p>
             </div>
             <div className="d-flex align-items-start mt-3 ">
-              <img src={location} width="25px"  className="mt-1"/>
+              <img src={location} width="25px" className="mt-1" />
               <h3 className="Sub-h3 ms-2">Available For: </h3>
               <p className="sub-name ms-3">Home Tuition</p>
             </div>
           </Col>
         </Row>
-       
       </Card.Body>
     </Card>
   );
