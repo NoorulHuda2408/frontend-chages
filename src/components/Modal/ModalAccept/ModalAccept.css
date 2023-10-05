@@ -1,6 +1,7 @@
 .modal-main{
     background: #49bbbd;
   box-shadow: 4px 7px 26px 0px rgba(0, 0, 0, 0.12) !important; 
+  color: #fff;
 }
 
 .label-txt{
@@ -10,8 +11,8 @@
  
 }
 .inpt-date{
-    font-size: 20px;
-    color: black;
+    font-size: 20px !important;
+    
 }
 .modal-content {
     border-radius: 30px !important;

@@ -12,7 +12,7 @@ export default function ModalAccept(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton className="main-section">
+        <Modal.Header closeButton className="modal-main">
           <Modal.Title
             id="contained-modal-title-vcenter"
             className=" ms-auto text-center"
