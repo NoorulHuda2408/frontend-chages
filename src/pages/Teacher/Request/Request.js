@@ -12,13 +12,13 @@ export default function Request() {
         </Row>
 
         <Row>
-          <Col>
+          <Col lg={4}>
             <CardNotify />
           </Col>
-          <Col>
+          <Col lg={4}>
             <CardNotify />
           </Col>
-          <Col>
+          <Col lg={4}>
             <CardNotify />
           </Col>
         </Row>

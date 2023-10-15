@@ -12,7 +12,7 @@ p {
   border-radius: 15px !important;
   border-top-right-radius: 15px !important;
   border-top-left-radius: 15px !important;
-  background: linear-gradient(to bottom, #c5d8d9, #ebefef) !important;
+  background: linear-gradient(to bottom, #dde8e9, #ebefef) ;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5) !important;
   border-top: 8px solid #1d7172 !important;
   border-bottom: 8px solid #236e6f !important;
@@ -26,8 +26,8 @@ p {
 } */
 
 .card-head {
-  font-size: 32px !important;
-  font-weight: 500 !important;
+  font-size: 40px !important;
+  font-weight: 600 !important;
   color: rgb(244, 140, 6) !important;
 }
 .thead-main {
