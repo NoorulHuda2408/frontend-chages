@@ -103,7 +103,8 @@ export default function Register() {
   };
   return (
     <>
-      <Navbar />
+    
+    
       <Container fluid className="Main-w pb-5">
         <div className="main-1">
           <Row className="justify-content-center align-items-center Form-main">

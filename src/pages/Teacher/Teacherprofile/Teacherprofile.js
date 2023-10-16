@@ -4,9 +4,14 @@ import { useState } from "react";
 import "./Teacherprofile.css";
 import Navbar from "../../../components/Navbar/index";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { API_URL } from "../../../service/client";
+import { useSelector } from "react-redux";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function Teacherprofile() {
-  const [firstName, setFirstName] = useState("");
+  const [qualification, setQualification] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [email, setEmail] = useState("");
   const [cnic, setCnic] = useState("");
@@ -15,8 +20,16 @@ export default function Teacherprofile() {
   const [address, setAddress] = useState("");
   const [skill, setSkill] = useState("");
   const [image, setImage] = useState("");
+  const [gender, setGender] = useState("");
+  const [experience, setExperience] = useState("");
+  const [level, setLevel] = useState("");
+  const [subject, setSubject] = useState("");
+  const [biography, setBiography] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [province, setProvince] = useState("");
   const navigate = useNavigate();
+  const userData = useSelector((state) => state?.signin?.signInData?.data);
+  const [loader, setLoader] = useState(false);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -29,10 +42,104 @@ export default function Teacherprofile() {
     }
   };
 
+  const formValidation = () => {
+    if (!phoneNo) {
+      toast.error("Please Enter phone number");
+      return false;
+    } else if (!cnic) {
+      toast.error("Please Enter Cnic");
+      return false;
+    } else if (!age) {
+      toast.error("Please enter age");
+      return false;
+    } else if (!city) {
+      toast.error("Please enter password");
+      return false;
+    } else if (!address) {
+      toast.error("Please enter address");
+      return false;
+    } else if (!skill) {
+      toast.error("Please enter skill");
+      return false;
+    } else if (!gender) {
+      toast.error("Please Select Gender");
+      return false;
+    } else if (!experience) {
+      toast.error("Please enter your experience ");
+      return false;
+    } else if (!level) {
+      toast.error("Please enter Teaching level");
+      return false;
+    } else if (!subject) {
+      toast.error("Please enter Subject");
+      return false;
+    } else if (!biography) {
+      toast.error("Please enter Biography");
+      return false;
+    } else if (!province) {
+      toast.error("Please enter Privince");
+      return false;
+    }
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (file.size >= 2872139) {
+      toast.error("File cannot be greater than 3mbs");
+    } else {
+      var data = new FormData();
+      data.append("files", file);
+      if (file) {
+        const responses = await axios.post(`${API_URL}/api/upload`, data);
+        console.log("responses", responses);
+        if (responses.status === 200) {
+          toast.success("Image Upload Successfully.");
+        }
+        setImage(responses?.data?.imageUrl);
+      }
+    }
+  };
+  const handleChange = async () => {
+    const res = formValidation();
+    if (res === false) {
+      return false;
+    }
+    setLoader(true);
+    const data = {
+      teacherId: userData?._id,
+      imageUrl: image,
+      phoneNo: phoneNo,
+      age: age,
+      gender: gender,
+      cnic: cnic,
+      city: city,
+      province: province,
+      address: address,
+
+      qualification: qualification,
+      experience: experience,
+      level: level,
+      skills: skill,
+      subject: subject,
+      bio: biography,
+    };
+
+    try {
+      await axios.post(`${API_URL}/api/mentorProfile`, data).then((res) => {
+        console.log("this is", res);
+
+        setLoader(false);
+        toast.success("Profile Creates Successfully");
+        navigate("/Notification");
+      });
+    } catch (e) {
+      toast.error(e);
+    }
+  };
+
   return (
     <>
       <main className="py-6 bg-surface-secondary main-w2">
-        <Navbar />
         <div className="wrapper main-w2">
           <div className="profile">
             <div className="content">
@@ -46,7 +153,7 @@ export default function Teacherprofile() {
                     borderRadius: "100px",
                   }}
                   src={
-                    selectedImage ||
+                    image ||
                     "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg"
                   }
                   alt="Profile"
@@ -61,27 +168,11 @@ export default function Teacherprofile() {
                 <div className="grid-65 ">
                   <input
                     accept="image/*"
-                    onChange={handleImageChange}
+                    onChange={(e) => {
+                      handleImageUpload(e);
+                    }}
                     type="file"
                     class="btn"
-                  />
-                </div>
-              </fieldset>
-
-              <fieldset>
-                <div className="grid-35">
-                  <label for="fname">Name</label>
-                </div>
-                <div className="grid-65">
-                  <input
-                    value={firstName}
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
-                    }}
-                    type="text"
-                    id="fname"
-                    tabindex="1"
-                    placeholder="Enter Your Name"
                   />
                 </div>
               </fieldset>
@@ -104,23 +195,6 @@ export default function Teacherprofile() {
                       // Remove any non-numeric characters from the input
                       e.target.value = e.target.value.replace(/[^0-9]/g, "");
                     }}
-                  />
-                </div>
-              </fieldset>
-              <fieldset>
-                <div className="grid-35">
-                  <label for="lname">Email</label>
-                </div>
-                <div className="grid-65">
-                  <input
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    type="email"
-                    id="lname"
-                    tabindex="2"
-                    placeholder="Enter Your Email"
                   />
                 </div>
               </fieldset>
@@ -156,6 +230,9 @@ export default function Teacherprofile() {
                     }}
                   >
                     <input
+                      onChange={(e) => {
+                        setGender(e.target.value);
+                      }}
                       type="radio"
                       name="gender"
                       value="male"
@@ -171,6 +248,9 @@ export default function Teacherprofile() {
                     }}
                   >
                     <input
+                      onChange={(e) => {
+                        setGender(e.target.value);
+                      }}
                       type="radio"
                       name="gender"
                       value="female"
@@ -180,6 +260,9 @@ export default function Teacherprofile() {
                   </label>
                   <label style={{ display: "flex", alignItems: "center" }}>
                     <input
+                      onChange={(e) => {
+                        setGender(e.target.value);
+                      }}
                       type="radio"
                       name="gender"
                       value="other"
@@ -231,16 +314,19 @@ export default function Teacherprofile() {
                   <label for="lname">Province/Region</label>
                 </div>
                 <div className="grid-65">
-                  <select>
-                    <option value="">Please Select</option>
-                    <option value="8">Federal Area</option>
-                    <option value="7">Azad Kashmir</option>
-                    <option value="6">Balochistan</option>
-                    <option value="5">FANA</option>
-                    <option value="4">FATA</option>
-                    <option value="3">KPK</option>
-                    <option value="2">Punjab</option>
-                    <option value="1">Sindh</option>
+                  <select
+                    onChange={(e) => {
+                      setProvince(e.target.value);
+                    }}
+                  >
+                    <option value="Federal Area">Federal Area</option>
+                    <option value="Azad Kashmir">Azad Kashmir</option>
+                    <option value="Balochistan">Balochistan</option>
+                    <option value="FANA">FANA</option>
+                    <option value="FATA">FATA</option>
+                    <option value="KPK">KPK</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Sindh">Sindh</option>
                   </select>
                 </div>
               </fieldset>
@@ -275,6 +361,8 @@ export default function Teacherprofile() {
                 </div>
                 <div className="grid-65">
                   <input
+                    onChange={(e) => setQualification(e.target.value)}
+                    value={qualification}
                     type="text"
                     id="lname"
                     tabindex="2"
@@ -289,6 +377,10 @@ export default function Teacherprofile() {
                 </div>
                 <div className="grid-65">
                   <input
+                    onChange={(e) => {
+                      setExperience(e.target.value);
+                    }}
+                    value={experience}
                     type="text"
                     id="lname"
                     tabindex="2"
@@ -302,7 +394,11 @@ export default function Teacherprofile() {
                   <label for="lname">Teaching Level</label>
                 </div>
                 <div className="grid-65">
-                  <select>
+                  <select
+                    onChange={(e) => {
+                      setLevel(e.target.value);
+                    }}
+                  >
                     <option value="">Please Select</option>
                     <option value="primary">Primary School Level</option>
                     <option value="high school">High School Level</option>
@@ -336,6 +432,9 @@ export default function Teacherprofile() {
                 </div>
                 <div className="grid-65">
                   <textarea
+                    onChange={(e) => {
+                      setSubject(e.target.value);
+                    }}
                     name="myTextarea"
                     id="myTextarea"
                     rows="4"
@@ -359,6 +458,9 @@ export default function Teacherprofile() {
                 </div>
                 <div className="grid-65">
                   <textarea
+                    onChange={(e) => {
+                      setBiography(e.target.value);
+                    }}
                     name="myTextarea"
                     id="myTextarea"
                     rows="4"
@@ -370,16 +472,14 @@ export default function Teacherprofile() {
               </fieldset>
 
               <fieldset>
-                <input type="submit" className="Btn" value="Save Changes" />
-
-                <input
-                  type="button"
-                  class="Btn cancel"
-                  value="Cancel"
-                  onClick={() => {
-                    navigate("/");
-                  }}
-                />
+                <button onClick={handleChange}  className="Btn">
+                  <div style={{ marginRight: "10px" }}>Save Changes</div>
+                  {loader && (
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                  )}
+                </button>
               </fieldset>
             </div>
           </div>

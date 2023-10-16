@@ -7,9 +7,12 @@ import "./index.css";
 import Button from "react-bootstrap/esm/Button";
 import logo from "../../assests/logo.svg";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavbarCustom = () => {
   const navigate = useNavigate();
+  const userData = useSelector((state) => state?.signin?.signInData?.data);
+  console.log(userData);
   return (
     <div className="container-fluid NavbarSection ">
       <Navbar expand="lg" className="NavbarA ">
@@ -35,20 +38,46 @@ const NavbarCustom = () => {
               >
                 Home
               </Nav.Link>
-              <Nav.Link href="#link" className="ms-md-3 NavItems">
-                Courses
-              </Nav.Link>
-              <Nav.Link href="#home" className="ms-md-3 NavItems">
-                Careers
-              </Nav.Link>
-              <Nav.Link href="#link" className="ms-md-3 NavItems">
-                Blogs
-              </Nav.Link>
-              <Nav.Link href="#link" className="ms-md-3 NavItems">
-                About Us
-              </Nav.Link>
+              {!userData && (
+                <>
+                  <Nav.Link href="#link" className="ms-md-3 NavItems">
+                    Courses
+                  </Nav.Link>
+                  <Nav.Link href="#home" className="ms-md-3 NavItems">
+                    Careers
+                  </Nav.Link>
+                  <Nav.Link href="#link" className="ms-md-3 NavItems">
+                    Blogs
+                  </Nav.Link>
+                  <Nav.Link href="#link" className="ms-md-3 NavItems">
+                    About Us
+                  </Nav.Link>
+                </>
+              )}
+              {userData?.role === 1 ? (
+                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                  Notification
+                </Nav.Link>
+              ) : userData?.role === 0 ? (
+                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                  Progress
+                </Nav.Link>
+              ) : (
+                ""
+              )}
+              {userData?.role === 1 ? (
+                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                  Students
+                </Nav.Link>
+              ) : userData?.role === 0 ? (
+                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                  Search Teacher
+                </Nav.Link>
+              ) : (
+                ""
+              )}
 
-              <NavDropdown
+              {/* <NavDropdown
                 title="Teacher"
                 id="basic-nav-dropdown"
                 className="navbar-drop"
@@ -78,12 +107,10 @@ const NavbarCustom = () => {
                   Upload Result
                 </NavDropdown.Item>
 
-                {/* <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item> */}
-              </NavDropdown>
+               
+              </NavDropdown> */}
 
-              <NavDropdown
+              {/* <NavDropdown
                 title="Student"
                 id="basic-nav-dropdown"
                 className="navbar-drop"
@@ -111,38 +138,44 @@ const NavbarCustom = () => {
                   View Progress Report
                 </NavDropdown.Item>
 
-                {/* <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item> */}
-              </NavDropdown>
-              {/* <Nav variant="pills" className="flex-row   border">
-            <Nav.Item  >
-              <Nav.Link eventKey="first" >Sign in</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="second" >Sign Up</Nav.Link>
-            </Nav.Item>
-          </Nav> */}
-              <div className="NavbarButton  d-flex justify-content-between ms-md-5">
+               
+              </NavDropdown> */}
+
+              {!userData ? (
+                <div className="NavbarButton  d-flex justify-content-between ms-md-5">
+                  <button
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                    type="button"
+                    className="dasLoginButton ms-md-5"
+                  >
+                    Login{" "}
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                    type="button"
+                    className="dasSignButton ms-md-3"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              ) : (
                 <button
                   onClick={() => {
-                    navigate("/login");
-                  }}
-                  type="button"
-                  className="dasLoginButton ms-md-5"
-                >
-                  Login{" "}
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/login");
+                    localStorage.clear();
+
+                    navigate("/");
+                    window.location.reload();
                   }}
                   type="button"
                   className="dasSignButton ms-md-3"
                 >
-                  Sign Up
+                  Logout
                 </button>
-              </div>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
