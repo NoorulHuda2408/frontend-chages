@@ -3,11 +3,84 @@ import { useState } from "react";
 import "./Register.css";
 import Navbar from "../../../components/Navbar/index";
 import Select from "react-select";
+import { API_URL } from "../../../service/client";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [image, setImage] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
+  const [age, setage] = useState("");
+  const [gender, setGender] = useState("");
+  const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [institute, setInstituate] = useState("");
+  const [className, setClassName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [modeStudy, setModeStudy] = useState("");
+  const [addsitional, setAdditional] = useState("");
+  const userData = useSelector((state) => state?.signin?.signInData?.data);
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (file.size >= 2872139) {
+      toast.error("File cannot be greater than 3mbs");
+    } else {
+      var data = new FormData();
+      data.append("files", file);
+      if (file) {
+        const responses = await axios.post(`${API_URL}/api/upload`, data);
+        console.log("responses", responses);
+        if (responses.status === 200) {
+          toast.success("Image Upload Successfully.");
+        }
+        setImage(responses?.data?.imageUrl);
+      }
+    }
+  };
+
+  const formValidation = () => {
+    if (!phoneNo) {
+      toast.error("Please Enter phone number");
+      return false;
+    } else if (!age) {
+      toast.error("Please enter age");
+      return false;
+    } else if (!city) {
+      toast.error("Please enter password");
+      return false;
+    } else if (!address) {
+      toast.error("Please enter address");
+      return false;
+    } else if (!gender) {
+      toast.error("Please Select Gender");
+      return false;
+    } else if (!province) {
+      toast.error("Please enter Privince");
+      return false;
+    } else if (!institute) {
+      toast.error("Please enter Instituate");
+      return false;
+    } else if (!className) {
+      toast.error("Please enter Class");
+      return false;
+    } else if (!modeStudy) {
+      toast.error("Please enter Modeof study");
+      return false;
+    } else if (!addsitional) {
+      toast.error("Please enter Additional Infro");
+      return false;
+    }
+  };
 
   const City = [
     "Taxila",
@@ -101,10 +174,47 @@ export default function Register() {
       reader.readAsDataURL(file);
     }
   };
+
+  const handleChangeRegister = async (e) => {
+    e.preventDefault();
+
+    const res = formValidation();
+    if (res === false) {
+      return false;
+    }
+    setLoader(true);
+    const data = {
+      studentId: userData?._id,
+      imageUrl: image,
+      phoneNo: phoneNo,
+      age: age,
+      gender: gender,
+      // cnic: String,
+      province: province,
+      city: city,
+      address: address,
+      instiute: institute,
+      classStudy: className,
+      subject: subject,
+      mode: modeStudy,
+      information: addsitional,
+    };
+
+    try {
+      await axios.post(`${API_URL}/api/studentProfile`, data).then((res) => {
+        console.log("this is", res);
+
+        setLoader(false);
+        toast.success("Profile Creates Successfully");
+        navigate("/Searchtutor");
+      });
+    } catch (e) {
+      setLoader(false);
+      toast.error(e.message);
+    }
+  };
   return (
     <>
-    
-    
       <Container fluid className="Main-w pb-5">
         <div className="main-1">
           <Row className="justify-content-center align-items-center Form-main">
@@ -117,7 +227,7 @@ export default function Register() {
                   borderRadius: "100px",
                 }}
                 src={
-                  selectedImage ||
+                  image ||
                   "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg"
                 }
                 alt="Profile"
@@ -130,11 +240,11 @@ export default function Register() {
                   <input
                     type="file"
                     accept="image/*"
-                    onChange={handleImageChange}
+                    onChange={handleImageUpload}
                   />
                 </div>
               </div>
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <label className="label-form required-label">
                   Student Name
                 </label>
@@ -146,7 +256,7 @@ export default function Register() {
                     required
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-4">
                 <label className="label-form required-label">Contact No</label>
@@ -158,6 +268,9 @@ export default function Register() {
                     onInput={(e) => {
                       // Remove any non-numeric characters from the input
                       e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    }}
+                    onChange={(e) => {
+                      setPhoneNo(e.target.value);
                     }}
                   />
                 </div>
@@ -171,6 +284,9 @@ export default function Register() {
                     placeholder="Enter Age"
                     name="age"
                     required
+                    onChange={(e) => {
+                      setage(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -181,11 +297,14 @@ export default function Register() {
                   <Select
                     options={genderOptions}
                     placeholder="Please select..."
+                    onChange={(e) => {
+                      setGender(e.value);
+                    }}
                   />
                 </div>
               </div>
 
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <label className="label-form required-label">Email</label>
                 <div className="inputdiv">
                   <input
@@ -195,7 +314,7 @@ export default function Register() {
                     required
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-4">
                 <label className="label-form required-label">
@@ -205,18 +324,22 @@ export default function Register() {
                   <Select
                     options={provinceOptions}
                     placeholder="Select Your Province/Region"
+                    onChange={(e) => {
+                      setProvince(e.value);
+                    }}
                   />
                 </div>
               </div>
-              
+
               <div className="mt-4">
-                <label className="label-form required-label">
-                  City
-                </label>
+                <label className="label-form required-label">City</label>
                 <div className="inputdiv">
                   <Select
                     options={Cityoption}
                     placeholder="Select Your City"
+                    onChange={(e) => {
+                      setCity(e.value);
+                    }}
                   />
                 </div>
               </div>
@@ -240,6 +363,9 @@ export default function Register() {
                     placeholder="Enter Your Address"
                     name="address"
                     required
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -254,6 +380,9 @@ export default function Register() {
                     placeholder="Enter Your School/College/University Name"
                     name="institute"
                     required
+                    onChange={(e) => {
+                      setInstituate(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -264,6 +393,9 @@ export default function Register() {
                   <Select
                     options={optionsclass}
                     placeholder="Select a class..."
+                    onChange={(e) => {
+                      setClassName(e.value);
+                    }}
                   />
                 </div>
               </div>
@@ -276,7 +408,9 @@ export default function Register() {
                   isMulti
                   options={options}
                   value={selectedOptions}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    setSubject(e.value);
+                  }}
                   placeholder="Select Subjects"
                 />
               </div>
@@ -288,6 +422,9 @@ export default function Register() {
                 <Select
                   options={studyOptions}
                   placeholder="Choose Your Mode of Study"
+                  onChange={(e) => {
+                    setModeStudy(e.value);
+                  }}
                 />
               </div>
 
@@ -300,12 +437,22 @@ export default function Register() {
                     rows="5"
                     cols="50"
                     placeholder="Extra Detail If any"
+                    onChange={(e) => {
+                      setAdditional(e.target.value);
+                    }}
                   ></textarea>
                 </div>
               </div>
 
-              <button className="formsubmitbutton ">
-                {loading ? "Loading..." : "Submit"}
+              <button onClick={handleChangeRegister} className="formsubmitbutton ">
+                <div style={{ marginRight: "10px" }}>
+                  Submit
+                </div>
+                {loader && (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                )}
               </button>
             </form>
           </Row>

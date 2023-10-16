@@ -55,22 +55,33 @@ const NavbarCustom = () => {
                 </>
               )}
               {userData?.role === 1 ? (
-                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                <Nav.Link onClick={() => {
+                  navigate("/Notification");
+                }}  className="ms-md-3 NavItems">
                   Notification
                 </Nav.Link>
               ) : userData?.role === 0 ? (
-                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                <Nav.Link  onClick={() => {
+                  navigate("/ViewProgress");
+                }}  className="ms-md-3 NavItems">
                   Progress
                 </Nav.Link>
               ) : (
                 ""
               )}
               {userData?.role === 1 ? (
-                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                <Nav.Link  onClick={() => {
+                  navigate("/StudentResult");
+                }}  className="ms-md-3 NavItems">
                   Students
                 </Nav.Link>
               ) : userData?.role === 0 ? (
-                <Nav.Link href="#link" className="ms-md-3 NavItems">
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/Searchtutor");
+                  }}
+                  className="ms-md-3 NavItems"
+                >
                   Search Teacher
                 </Nav.Link>
               ) : (

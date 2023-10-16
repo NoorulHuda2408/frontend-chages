@@ -94,6 +94,8 @@ input:focus {
   cursor: pointer;
   padding: 15px 30px;
   color: #fff;
+  display: flex;
+  align-items: center;
 }
 
 .formsubmitbutton:hover {
