@@ -1,0 +1,10 @@
+.Main-whole {
+  min-height: 100vh;
+}
+
+.h1-notification {
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32.5px;
+}

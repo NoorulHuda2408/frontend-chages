@@ -2,10 +2,14 @@ import "./Searchtutor.css";
 import { Row, Col, Container } from "react-bootstrap";
 import Navbar from "../../../components/Navbar/index";
 import Select from "react-select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card1 from "../../../components/Cards/Searchcard/Searchcard";
+import axios from "axios";
+import { API_URL } from "../../../service/client";
 
 export default function Searchtutor() {
+
+  const [teachersData,setTeachersData]=useState()
   const classes = [
     "Class 1 to 5",
     "Class 6 to 8",
@@ -75,6 +79,16 @@ export default function Searchtutor() {
     label: subject,
   }));
 
+  async function getTeachers() {
+    const res = await axios.get(`${API_URL}/api/getTeachers`);
+    console.log(res.data);
+    setTeachersData(res?.data)
+  }
+
+  useEffect(() => {
+    getTeachers();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -135,10 +149,7 @@ export default function Searchtutor() {
 
           <Row className="mt-4 pb-5">
             <Col lg={12}>
-              <Card1 />
-            </Col>
-            <Col lg={12}>
-              <Card1 />
+              <Card1 data={teachersData} />
             </Col>
           </Row>
         </Container>

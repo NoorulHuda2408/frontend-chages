@@ -12,6 +12,8 @@ import Packages from "./pages/Student/Packages/Packages";
 import ViewProgress from "./pages/Student/View Result/Viewprogress";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Appointment from './pages/Student/Request/Appointment';
+import MyStudents from './pages/Teacher/myStudents/Appointment';
 
 
 
@@ -37,11 +39,15 @@ function App() {
          <Route exact path="/" element={<Dashboard />} />
          <Route exact path="/teacherprofile" element={<Teacherprofile />} />
          <Route exact path="/Notification" element={<Notification />} />
-         <Route exact path="/StudentResult" element={<StudentResult />} />
+         {/* <Route exact path="/StudentResult" element={<StudentResult />} /> */}
          <Route exact path="/StudentRegistration" element={<StudentRegister />} />
          <Route exact path="/Searchtutor" element={<Searchtutor />} />
          <Route exact path="/Packages" element={<Packages />} />
          <Route exact path="/ViewProgress" element={<ViewProgress />} />
+         <Route exact path="/appointment" element={<Appointment/>} />
+         <Route exact path="/myStudents" element={<MyStudents/>} />
+
+
        
         
     </Routes>

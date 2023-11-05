@@ -7,71 +7,113 @@ import { useState } from "react";
 import Modalview from "../../Modal/ModalView/Modalview";
 import Modalaccept from "../../Modal/ModalAccept/ModalAccept";
 
-export default function Notifycard() {
+export default function Notifycard({ datas }) {
   const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
   const [modalaccept, setModalAccept] = useState(false);
+  const [time, setTime] = useState("");
+  const [student,setStudent] = useState();
+  const [cardId, setCardId] = useState();
+
+  console.log("cardId", cardId);
+
   return (
-    <Card className="card-main  mt-4">
-      <Card.Body className="card3-body">
-        <div className="img-contain">
-          <img
-            style={{
-              height: "100px",
-              width: "100px",
-              borderRadius: "100px",
-            }}
-            src={cardimg}
-          />
-        </div>
+    <>
+      <Row>
+        {datas?.length>0?datas?.map((data) => {
+          console.log(data);
+         
+            return (
+              <Col lg={4}>
+                <Card className="card-main  mt-4">
+                  <Card.Body className="card3-body">
+                    <div className="img-contain">
+                      <img
+                        style={{
+                          height: "100px",
+                          width: "100px",
+                          borderRadius: "100px",
+                        }}
+                        src={
+                          data?.profile?.imageUrl
+                            ? data?.profile?.imageUrl
+                            : cardimg
+                        }
+                      />
+                    </div>
 
-        <div>
-          <div className="ms-2 ps-2 mt-4">
-            <div className="d-flex align-items-center mt-3 ">
-              <h3 className="Subject-h5">Name : </h3>
-              <p className="subject-name ms-3">Alisbha</p>
-            </div>
-            <div className="d-flex align-items-center mt-3 ">
-              <h3 className="Subject-h5">Subject : </h3>
-              <p className="subject-name ms-3">Biology</p>
-            </div>
-            <div className="d-flex align-items-center mt-3 ">
-              <h3 className="Subject-h5">Class : </h3>
-              <p className="subject-name ms-3"> 12</p>
-            </div>
+                    <div>
+                      <div className="ms-2 ps-2 mt-4">
+                        <div className="d-flex align-items-center mt-3 ">
+                          <h3 className="Subject-h5">Name : </h3>
+                          <p className="subject-name ms-3">
+                            {data?.studentdata?.firstName}{" "}
+                            {data?.studentdata?.lastName}
+                          </p>
+                        </div>
+                        <div className="d-flex align-items-center mt-3 ">
+                          <h3 className="Subject-h5">Gender : </h3>
+                          <p className="subject-name ms-3">
+                            {data?.profile?.gender}
+                          </p>
+                        </div>
+                        <div className="d-flex align-items-center mt-3 ">
+                          <h3 className="Subject-h5">Class : </h3>
+                          <p className="subject-name ms-3">
+                            {" "}
+                            {data?.profile?.classStudy}
+                          </p>
+                        </div>
 
-            <div className="d-flex align-items-center mt-3 ">
-              <h3 className="Subject-h5">Study Mode : </h3>
-              <p className="subject-name ms-3"> Online</p>
-            </div>
-            <hr className="hr-notify"></hr>
-            <div className="d-flex justify-content-center mt-3">
-              <button
-                className="btn-profile mt-3 "
-                onClick={() => setModalShow(true)}
-              >
-                View Profile
-              </button>
-            </div>
-            <Modalview show={modalShow} onHide={() => setModalShow(false)} />
-            <hr className="hr-notify"></hr>
+                        <div className="d-flex align-items-center mt-3 ">
+                          <h3 className="Subject-h5">Study Mode : </h3>
+                          <p className="subject-name ms-3">
+                            {" "}
+                            {data?.profile?.mode}
+                          </p>
+                        </div>
+                        <hr className="hr-notify"></hr>
+                        <div className="d-flex justify-content-center mt-3">
+                          <button
+                            className="btn-profile mt-3 "
+                            onClick={() => {setModalShow(true);setStudent(data)}}
+                          >
+                            View Profile
+                          </button>
+                        </div>
+                        <Modalview
+                        student={student}
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                        />
+                        <hr className="hr-notify"></hr>
 
-            <div className="d-flex align-items-center justify-content-evenly mt-3">
-              <button
-                className="btn-learn mt-3"
-                onClick={() => setModalAccept(true)}
-              >
-                Accept
-              </button>
-              <button className="btn-learn mt-3">Reject</button>
-            </div>
-            <Modalaccept
-              show={modalaccept}
-              onHide={() => setModalAccept(false)}
-            />
-          </div>
-        </div>
-      </Card.Body>
-    </Card>
+                        <div className="d-flex align-items-center justify-content-evenly mt-3">
+                          <button
+                            className="btn-learn mt-3"
+                            onClick={() => {
+                              setModalAccept(true);
+                              setCardId(data?.student?._id);
+                            }}
+                          >
+                            Accept
+                          </button>
+                          <button className="btn-learn mt-3">Reject</button>
+                        </div>
+                        <Modalaccept
+                          id={cardId}
+                          show={modalaccept}
+                          onHide={() => setModalAccept(false)}
+                          setTime={setTime}
+                        />
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+        }):"No data Found"}
+      </Row>
+    </>
   );
 }

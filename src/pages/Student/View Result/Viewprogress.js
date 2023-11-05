@@ -2,8 +2,16 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./Viewprogress.css";
 import Navbar from "../../../components/Navbar/index";
 import Procard from "../../../components/Cards/Progresscard/CardProgress";
+import { useState,useEffect } from "react";
+import axios from "axios";
+import { API_URL } from "../../../service/client";
+import { useSelector } from "react-redux";
+
 
 export default function Viewprogress() {
+  const [data, setData] = useState();
+  const userData = useSelector((state) => state?.signin?.signInData?.data);
+
   const reportData = [
     {
       course: "Mathematics",
@@ -21,6 +29,21 @@ export default function Viewprogress() {
       comment: "Average performance in history.",
     },
   ];
+  async function getMarks() {
+    try {
+      const res = await axios.get(`${API_URL}/api/getMarks/${userData._id}`);
+      if(res.status===200){
+        setData(res.data);
+
+      }
+      console.log("marks ",res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  useEffect(() => {
+    getMarks();
+  }, []);
   return (
     <>
       <Navbar />
@@ -30,7 +53,7 @@ export default function Viewprogress() {
         </Row>
         <Row className="mt-4 mb-3">
           <Col lg={12} md={12}>
-            <Procard />
+            <Procard data={data} />
           </Col>
         </Row>
       </Container>

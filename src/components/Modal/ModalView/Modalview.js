@@ -3,6 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./Modalview.css";
 import imageLink from "../../../assests/Card/female-avatar-profile-icon-round-woman-face-vector-18307274.jpg";
 export default function Modalview(props) {
+  console.log(props.student);
   return (
     <>
       <Modal
@@ -32,7 +33,8 @@ export default function Modalview(props) {
                   style={{ borderRadius: "100px" }}
                   width={200}
                   height={200}
-                  src={imageLink}
+                  src={props?.student?.profile?.imageUrl
+                    ?props?.student?.profile?.imageUrl:imageLink}
                 />
               </div>
             </Col>
@@ -47,7 +49,7 @@ export default function Modalview(props) {
                     <p className="label-p">Full Name</p>
                   </Col>
                   <Col md={8}>
-                    <p className="">Alisbha</p>
+                    <p className="">{props?.student?.studentdata?.firstName} {props?.student?.studentdata?.lastName}</p>
                   </Col>
                 </Row>
 
@@ -57,7 +59,7 @@ export default function Modalview(props) {
                     <p className="label-p">Contact No</p>
                   </Col>
                   <Col md={8}>
-                    <p className="text-muted mb-0">+92 331 7645638</p>
+                    <p className="text-muted mb-0">{props?.student?.profile?.phoneNo}</p>
                   </Col>
                 </Row>
                 <hr />
@@ -67,7 +69,7 @@ export default function Modalview(props) {
                     <p className="label-p">Age</p>
                   </Col>
                   <Col md={8}>
-                    <p className="mb-0">18</p>
+                    <p className="mb-0">{props?.student?.profile?.age}</p>
                   </Col>
                 </Row>
                 <hr />
@@ -77,7 +79,7 @@ export default function Modalview(props) {
                     <p className="label-p">Gender</p>
                   </Col>
                   <Col md={8}>
-                    <p className=" mb-0">Female</p>
+                    <p className=" mb-0">{props?.student?.profile?.gender}</p>
                   </Col>
                 </Row>
                 <hr />
@@ -86,7 +88,7 @@ export default function Modalview(props) {
                     <p className="label-p">Email</p>
                   </Col>
                   <Col md={8}>
-                    <p className=" mb-0">AlisbhaAnjum@gmail.com</p>
+                    <p className=" mb-0">{props?.student?.studentdata?.email}</p>
                   </Col>
                 </Row>
                 <hr style={{ color: "black" }} />
@@ -95,11 +97,11 @@ export default function Modalview(props) {
                     <p className="label-p">City</p>
                   </Col>
                   <Col md={8}>
-                    <p className="text-muted mb-0">Rawalpindi</p>
+                    <p className="text-muted mb-0">{props?.student?.profile?.city}</p>
                   </Col>
                 </Row>
-                <hr />
-                <Row>
+                {/* <hr /> */}
+                {/* <Row>
                   <Col md={4}>
                     <p className="label-p">Address</p>
                   </Col>
@@ -144,7 +146,7 @@ export default function Modalview(props) {
                   <Col md={8}>
                     <p className="text-muted mb-0">Online</p>
                   </Col>
-                </Row>
+                </Row> */}
               </div>
             </Col>
           </Row>

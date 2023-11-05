@@ -55,24 +55,33 @@ const NavbarCustom = () => {
                 </>
               )}
               {userData?.role === 1 ? (
-                <Nav.Link onClick={() => {
-                  navigate("/Notification");
-                }}  className="ms-md-3 NavItems">
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/Notification");
+                  }}
+                  className="ms-md-3 NavItems"
+                >
                   Notification
                 </Nav.Link>
               ) : userData?.role === 0 ? (
-                <Nav.Link  onClick={() => {
-                  navigate("/ViewProgress");
-                }}  className="ms-md-3 NavItems">
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/ViewProgress");
+                  }}
+                  className="ms-md-3 NavItems"
+                >
                   Progress
                 </Nav.Link>
               ) : (
                 ""
               )}
               {userData?.role === 1 ? (
-                <Nav.Link  onClick={() => {
-                  navigate("/StudentResult");
-                }}  className="ms-md-3 NavItems">
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/myStudents");
+                  }}
+                  className="ms-md-3 NavItems"
+                >
                   Students
                 </Nav.Link>
               ) : userData?.role === 0 ? (
@@ -83,6 +92,19 @@ const NavbarCustom = () => {
                   className="ms-md-3 NavItems"
                 >
                   Search Teacher
+                </Nav.Link>
+              ) : (
+                ""
+              )}
+
+              {userData?.role === 0 ? (
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/appointment");
+                  }}
+                  className="ms-md-3 NavItems"
+                >
+                  Appointment & Register Teachers
                 </Nav.Link>
               ) : (
                 ""

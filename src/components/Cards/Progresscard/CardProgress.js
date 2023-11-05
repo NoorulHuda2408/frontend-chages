@@ -2,7 +2,7 @@ import "./CardProgress.css";
 import Card from "react-bootstrap/Card";
 
 import { Table } from "react-bootstrap";
-export default function CardProgress() {
+export default function CardProgress(props) {
   const reportData = [
     {
       course: "Mathematics",
@@ -45,20 +45,26 @@ export default function CardProgress() {
           <thead className="thead-main">
             <tr>
               <th className="th-common">Course</th>
-              <th className="th-common">Grade</th>
-              <th className="th-common">Marks</th>
+              <th className="th-common">Obt Marks</th>
+              <th className="th-common">Total Marks</th>
               <th className="th-common">Comment</th>
+              <th className="th-common">Notes</th>
             </tr>
           </thead>
           <tbody className="text-center">
-            {reportData.map((item, index) => (
-              <tr key={index}>
-                <td>{item.course}</td>
-                <td>{item.grade}</td>
-                <td>{item.Marks}</td>
-                <td>{item.comment}</td>
-              </tr>
-            ))}
+            {props?.data?.length > 0
+              ? props?.data?.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.subject}</td>
+                    <td>{item.obtainMarks}</td>
+                    <td>{item.totalMarks}</td>
+                    <td>{item.feedback}</td>
+                    <td className="limited-width-cell">
+                      {item.notes ? <a href={item.notes} target="_blank" style={{textDecoration:"underline",color:"blue"}}>Click here</a> : "No notes"}
+                    </td>
+                  </tr>
+                ))
+              : "No data Found"}
           </tbody>
         </Table>
       </Card.Body>

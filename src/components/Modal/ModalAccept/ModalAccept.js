@@ -2,8 +2,36 @@ import Modal from "react-bootstrap/Modal";
 import { Row, Col, Container } from "react-bootstrap";
 import "./ModalAccept.css";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+import { API_URL } from "../../../service/client";
+import { useState } from "react";
 
 export default function ModalAccept(props) {
+  console.log(props)
+  const [time, setTime] = useState("");
+  async function approved() {
+    if (!time) {
+      toast.error("please add appiontment time");
+      return false;
+    }
+    const res = await axios.post(
+      `${API_URL}/api/approveNotification/${props?.id}`,
+      {
+        time: time,
+      }
+    );
+    console.log(res);
+    if (res.status === 200) {
+      console.log(res);
+      console.log("Approved successfully");
+      toast.success("Approved successfully");
+      window.location.reload();
+    } else {
+      toast.error("Something went wrong");
+    }
+  }
   return (
     <>
       <Modal
@@ -31,6 +59,9 @@ export default function ModalAccept(props) {
                   Available Time
                 </Form.Label>
                 <Form.Control
+                  onChange={(e) => {
+                    setTime(e.target.value);
+                  }}
                   type="datetime-local"
                   id="datetime"
                   name="datetime"
@@ -42,7 +73,13 @@ export default function ModalAccept(props) {
           </Row>
           <Row>
             <div className="d-flex justify-content-end">
-              <button className="btn-submit mt-3 " onClick={props.onHide}>
+              <button
+                className="btn-submit mt-3 "
+                onClick={() => {
+                  props.onHide();
+                  approved();
+                }}
+              >
                 Submit
               </button>
             </div>

@@ -44,3 +44,9 @@ p {
   border-top-left-radius: 15px !important;
   font-size: 22px;
 }
+.limited-width-cell {
+  width: 20px !important ; /* Set the desired width */
+  white-space: nowrap !important ; /* Prevent text from wrapping */
+  overflow: hidden !important ; /* Hide any overflow text */
+  text-overflow: ellipsis !important ; /* Display an ellipsis for overflow text */
+}
