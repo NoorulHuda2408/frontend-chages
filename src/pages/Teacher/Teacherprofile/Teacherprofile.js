@@ -431,7 +431,38 @@ export default function Teacherprofile() {
                   <label for="lname">Subjects</label>
                 </div>
                 <div className="grid-65">
-                  <textarea
+
+               
+ 
+                <select
+                    onChange={(e) => {
+                      setSubject(e.target.value);
+                    }}
+                  >
+                   
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="History">History</option>
+                    <option value="Science">Science</option>
+                    <option value="Art">Art</option>
+                    <option value="Music">Music</option>
+
+                    <option value="Physical Education">Physical Education</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Geography">Geography</option>
+                    <option value="Economics">Economics</option>
+                    <option value="Psychology">Psychology</option>
+                    <option value="Sociology">Sociology</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Japanese">Japanese</option>
+
+
+                  </select>
+                  {/* <textarea
                     onChange={(e) => {
                       setSubject(e.target.value);
                     }}
@@ -440,7 +471,7 @@ export default function Teacherprofile() {
                     rows="4"
                     cols="50"
                     placeholder="Enter your Subjects"
-                  ></textarea>
+                  ></textarea> */}
                   <br />
                 </div>
               </fieldset>

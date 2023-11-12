@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@zegocloud/zimkit-react": "^1.2.1",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.1",
     "font-awesome": "^4.7.0",
@@ -25,7 +26,8 @@
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zego-zim-web": "^2.11.0"
   },
   "scripts": {
     "start": "react-scripts start",

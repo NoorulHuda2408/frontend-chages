@@ -16,6 +16,8 @@ import Appointment from "./pages/Student/Request/Appointment";
 import MyStudents from "./pages/Teacher/myStudents/Appointment";
 import { useEffect } from "react";
 
+
+
 function App() {
   
   return (
@@ -50,6 +52,10 @@ function App() {
           <Route exact path="/ViewProgress" element={<ViewProgress />} />
           <Route exact path="/appointment" element={<Appointment />} />
           <Route exact path="/myStudents" element={<MyStudents />} />
+        
+
+       
+
         </Routes>
       </Router>
     </div>

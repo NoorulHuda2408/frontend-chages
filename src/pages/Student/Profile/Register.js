@@ -128,6 +128,7 @@ export default function Register() {
     "Masters",
     "O/A Level",
   ];
+  const classessss = ["Class 1 to 5"];
   const commonSubjects = [
     "Mathematics",
     "English",
@@ -152,6 +153,11 @@ export default function Register() {
   ];
 
   const options = commonSubjects.map((subject) => ({
+    value: subject,
+    label: subject,
+  }));
+
+  const optionsclassssss = classessss.map((subject) => ({
     value: subject,
     label: subject,
   }));
@@ -390,13 +396,23 @@ export default function Register() {
               <div className="mt-4">
                 <label className="label-form required-label">Class</label>
                 <div className="inputdiv">
-                  <Select
-                    options={optionsclass}
-                    placeholder="Select a class..."
-                    onChange={(e) => {
-                      setClassName(e.value);
-                    }}
-                  />
+                  {userData?.role === 2 ? (
+                    <Select
+                      options={optionsclassssss}
+                      placeholder="Select a class..."
+                      onChange={(e) => {
+                        setClassName(e.value);
+                      }}
+                    />
+                  ) : (
+                    <Select
+                      options={optionsclass}
+                      placeholder="Select a class..."
+                      onChange={(e) => {
+                        setClassName(e.value);
+                      }}
+                    />
+                  )}
                 </div>
               </div>
 
@@ -444,10 +460,11 @@ export default function Register() {
                 </div>
               </div>
 
-              <button onClick={handleChangeRegister} className="formsubmitbutton ">
-                <div style={{ marginRight: "10px" }}>
-                  Submit
-                </div>
+              <button
+                onClick={handleChangeRegister}
+                className="formsubmitbutton "
+              >
+                <div style={{ marginRight: "10px" }}>Submit</div>
                 {loader && (
                   <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>

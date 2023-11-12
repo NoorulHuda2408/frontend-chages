@@ -9,7 +9,7 @@ import { useState } from "react";
 import "./login.css";
 function Login() {
   const dispatch = useDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -36,7 +36,6 @@ function Login() {
     if (res === false) {
       return false;
     }
-    
 
     const data = {
       email: loginEmail,
@@ -49,25 +48,35 @@ function Login() {
         if (res?.payload?.data?.role === 0) {
           if (res?.payload?.data?.profileUpdated) {
             toast.success("Login Susseccfully");
-            navigate("/")
+            navigate("/");
           } else {
             toast.success("Profile Update Your Profile to Continue.");
-            navigate("/StudentRegistration")
-            
+            navigate("/StudentRegistration");
 
             // history.push("/personalInfo");
-             toast.success(res?.payload?.data?.message)
+            toast.success(res?.payload?.data?.message);
           }
         } else if (res?.payload?.data?.role === 1) {
           if (res?.payload?.data?.profileUpdated) {
             toast.success("Login Susseccfully");
-            navigate("/Notification")
+            navigate("/Notification");
           } else {
             toast.success("Profile Update Your Profile to Continue.");
-            navigate("/teacherprofile")
+            navigate("/teacherprofile");
 
             // history.push("/personalInfo");
-             toast.success(res?.payload?.data?.message)
+            toast.success(res?.payload?.data?.message);
+          }
+        } else if (res?.payload?.data?.role === 2) {
+          if (res?.payload?.data?.profileUpdated) {
+            toast.success("Login Susseccfully");
+            navigate("/");
+          } else {
+            toast.success("Profile Update Your Profile to Continue.");
+            navigate("/StudentRegistration");
+
+            // history.push("/personalInfo");
+            toast.success(res?.payload?.data?.message);
           }
         }
       } else {
@@ -125,7 +134,7 @@ function Login() {
         type="submit"
         className="sign-btn"
       >
-        <div style={{marginRight:"10px"}}>Submit</div>
+        <div style={{ marginRight: "10px" }}>Submit</div>
         {loader && (
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>

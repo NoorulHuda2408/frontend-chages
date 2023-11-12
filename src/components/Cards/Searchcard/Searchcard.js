@@ -14,6 +14,7 @@ import { API_URL } from "../../../service/client";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import { toast } from "react-toastify";
 
 export default function Card1({ data }) {
   const navigate = useNavigate();
@@ -24,12 +25,17 @@ export default function Card1({ data }) {
   console.log(data);
   async function HireStudent(id) {
     setLoader(true);
-    const res = await axios.post(
-      `${API_URL}/api/hireTeacher/${id}/${userData._id}`
-    );
-    if (res.status === 200) {
+    try {
+      const res = await axios.post(
+        `${API_URL}/api/hireTeacher/${id}/${userData._id}`
+      );
+      if (res.status === 200) {
+        setLoader(false);
+        setHireShow(id);
+      }
+    } catch (error) {
       setLoader(false);
-      setHireShow(id);
+      toast.error(error?.response?.data?.error);
     }
   }
   return (
@@ -41,7 +47,11 @@ export default function Card1({ data }) {
                 <Card.Body className="card3-body">
                   <Row>
                     <Col lg={3}>
-                      <img src={item.imageUrl?item?.imageUrl:cardimg} alt="card-img" className="card-img " />
+                      <img
+                        src={item.imageUrl ? item?.imageUrl : cardimg}
+                        alt="card-img"
+                        className="card-img "
+                      />
                       <div className="btn-contain">
                         <div className="mt-4 btn-12">
                           <button
@@ -63,11 +73,8 @@ export default function Card1({ data }) {
                                 Hire Tutor
                               </button>
                             ) : (
-                              <button
-                                
-                                className="btn-common btn-hi"
-                              >
-                               Request Sent
+                              <button className="btn-common btn-hi">
+                                Request Sent
                               </button>
                             )
                           ) : loader ? (

@@ -63,7 +63,7 @@ const NavbarCustom = () => {
                 >
                   Notification
                 </Nav.Link>
-              ) : userData?.role === 0 ? (
+              ) : userData?.role === 0 ||  userData?.role === 2 ? (
                 <Nav.Link
                   onClick={() => {
                     navigate("/ViewProgress");
@@ -84,7 +84,7 @@ const NavbarCustom = () => {
                 >
                   Students
                 </Nav.Link>
-              ) : userData?.role === 0 ? (
+              ) : userData?.role === 0 || userData?.role === 2 ? (
                 <Nav.Link
                   onClick={() => {
                     navigate("/Searchtutor");
@@ -97,15 +97,29 @@ const NavbarCustom = () => {
                 ""
               )}
 
-              {userData?.role === 0 ? (
+              {userData?.role === 0 || userData?.role === 2 ? (
                 <Nav.Link
                   onClick={() => {
                     navigate("/appointment");
                   }}
                   className="ms-md-3 NavItems"
                 >
-                  Appointment & Register Teachers
+                  Appointment 
                 </Nav.Link>
+                
+              ) : (
+                ""
+              )}
+              {userData?.role === 0 || userData?.role === 2 ? (
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/appointment");
+                  }}
+                  className="ms-md-3 NavItems"
+                >
+                  Register Teachers
+                </Nav.Link>
+                
               ) : (
                 ""
               )}
