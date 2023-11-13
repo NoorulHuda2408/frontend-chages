@@ -18,6 +18,39 @@ export default function Modalpkg(props) {
 
   const userData = useSelector((state) => state?.signin?.signInData?.data);
 
+  const formValidation = () => {
+    if (!price) {
+      toast.error("Please Enter Price for session");
+      return false;
+    } else if (!session) {
+      toast.error("Please enter Session");
+      return false;
+    } 
+  };
+
+  async function handleClick(e){
+    e.preventDefault();
+
+    const res = formValidation();
+    if (res === false) {
+      return false;
+    }
+
+    try{
+      const data=await axios.post(`${API_URL}/api/addMentorPkg/${userData?._id}`,{
+        price:price,
+        sesion:session
+      })
+      if(data.status===200){
+        toast.success("Package added successfully")
+        props.onHide(false)
+      }
+
+    }catch(e){
+      
+    }
+  }
+
 
   // /api/addMentorPkg/:id
  
@@ -83,10 +116,7 @@ export default function Modalpkg(props) {
             <div className="d-flex justify-content-end">
               <button
                 className="btn-submit mt-3 "
-                onClick={() => {
-                  props.onHide();
-               
-                }}
+                onClick={handleClick}
               >
                 Submit
               </button>

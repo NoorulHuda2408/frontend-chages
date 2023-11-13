@@ -3,9 +3,17 @@ import "./Packages.css";
 import Cardp from "../../../components/Cards/Packagecard/Packagecard";
 import Navbar from "../../../components/Navbar/index";
 import Modalpkg from "../../../components/Modal/ModalAddPackages/Modalpkg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API_URL } from "../../../service/client";
+import { useSelector } from "react-redux";
+
 export default function TeacherPackages() {
   const [modalpkg,setModalPkg]=useState(false)
+  const [dataa,setDataa]=useState()
+
+  const userData = useSelector((state) => state?.signin?.signInData?.data);
+
   const packages = [
     {
       title: "Basic Package",
@@ -39,6 +47,18 @@ export default function TeacherPackages() {
     },
     // Add more packages as needed
   ];
+
+  async function getPackage(){
+
+    const data=await axios.get(`${API_URL}/api/getMentorPkg/${userData?._id}`)
+    setDataa(data?.data)
+    console.log(data)
+
+  }
+
+  useEffect(()=>{
+    getPackage()
+  },[])
   return (
     <>
     <Modalpkg
@@ -54,11 +74,11 @@ export default function TeacherPackages() {
           Add Package
         </button>
         <Row className="mt-5 mb-3">
-          {packages.map((item, index) => {
+          {dataa?.map((item, index) => {
             return (
               <Col key={index} md={12} lg={4}>
                 <Cardp
-                  title={item.title}
+                  title={item?.typeOfPkg}
                   price={item.price}
                   features={item.features}
                 />

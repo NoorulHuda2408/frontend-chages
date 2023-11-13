@@ -51,7 +51,7 @@ function App() {
             element={<StudentRegister />}
           />
           <Route exact path="/Searchtutor" element={<Searchtutor />} />
-          <Route exact path="/Packages" element={<Packages />} />
+          <Route exact path="/Packages/:id" element={<Packages />} />
           <Route exact path="/ViewProgress" element={<ViewProgress />} />
           <Route exact path="/appointment" element={<Appointment />} />
           <Route exact path="/myStudents" element={<MyStudents />} />

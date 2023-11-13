@@ -57,7 +57,7 @@ export default function Card1({ data }) {
                           <button
                             className="btn-common btn-fr"
                             onClick={() => {
-                              navigate("/Packages");
+                              navigate(`/Packages/${item?.userData[0]._id}`);
                             }}
                           >
                             Packages
