@@ -15,6 +15,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Appointment from "./pages/Student/Request/Appointment";
 import MyStudents from "./pages/Teacher/myStudents/Appointment";
 import { useEffect } from "react";
+import EditStudent from "./pages/Student/editProfileStudent/EditStudent";
+import EditTeacher from "./pages/Teacher/editTeacher/EditTeacher";
+import TeacherPackages from "./pages/Teacher/TeacherPackages/TeacherPackages";
 
 
 
@@ -52,6 +55,12 @@ function App() {
           <Route exact path="/ViewProgress" element={<ViewProgress />} />
           <Route exact path="/appointment" element={<Appointment />} />
           <Route exact path="/myStudents" element={<MyStudents />} />
+          <Route exact path="/editProfile" element={<EditStudent/>} />
+          <Route exact path="/editMentor" element={<EditTeacher/>} />
+          <Route exact path="/teacherPacakages" element={<TeacherPackages/>} />
+
+
+
         
 
        
