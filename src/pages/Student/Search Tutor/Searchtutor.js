@@ -91,10 +91,10 @@ export default function Searchtutor() {
   }));
 
   const resetFilters = () => {
-    setSubject('');
-    setCity('');
-    setGender('');
-    setMode('');
+    setSubject("");
+    setCity("");
+    setGender("");
+    setMode("");
     setTeachersData(originalData); // Reset to the original data
   };
 
@@ -143,13 +143,13 @@ export default function Searchtutor() {
     const res = await axios.get(`${API_URL}/api/getTeachers`);
     console.log(res.data);
     setTeachersData(res?.data);
-    setOriginalData(res?.data)
+    setOriginalData(res?.data);
   }
 
   useEffect(() => {
     getTeachers();
     getStudentProfile();
-  }, [ subject, city, gender,mode]);
+  }, [subject, city, gender, mode]);
 
   return (
     <>
@@ -243,17 +243,15 @@ export default function Searchtutor() {
                   </button>
                 </div>
                 <div className="mt-4">
-                  <button onClick={resetFilters} className="searchbtn ms-4">Reset</button>
+                  <button onClick={resetFilters} className="searchbtn ms-4">
+                    Reset
+                  </button>
                 </div>
               </div>
             </Col>
           </Row>
 
-          <Row className="mt-4 pb-5">
-            <Col lg={12}>
-              <Card1 data={teachersData} />
-            </Col>
-          </Row>
+          <Card1 data={teachersData} />
         </Container>
       </Container>
     </>

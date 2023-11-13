@@ -6,14 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Modalview from "../../Modal/ModalView/Modalview";
 import Modalaccept from "../../Modal/ModalAccept/ModalAccept";
+import ModalFeedBack from "../../Modal/ModalFeedBack/ModalFeedBack";
 
 export default function AppointmentCard({ datas }) {
   const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
   const [modalaccept, setModalAccept] = useState(false);
   const [student, setStudent] = useState();
-  const [time, setTime] = useState("");
+  const [testId, setTestId] = useState("");
   const [cardId, setCardId] = useState();
+  const [modalFeedback, setModalFeedback] = useState(false);
 
   console.log("cardId", cardId);
 
@@ -23,6 +25,7 @@ export default function AppointmentCard({ datas }) {
         {datas?.length > 0
           ? datas?.map((data) => {
               console.log(data);
+              if(data.studentdata)
               return (
                 <Col lg={4}>
                   <Card className="card-main  mt-4">
@@ -63,21 +66,7 @@ export default function AppointmentCard({ datas }) {
                               {data?.student?.time}
                             </p>
                           </div>
-                          {/* <div className="d-flex align-items-center mt-3 ">
-                          <h3 className="Subject-h5">Class : </h3>
-                          <p className="subject-name ms-3">
-                            {" "}
-                           
-                          </p>
-                        </div> */}
 
-                          {/* <div className="d-flex align-items-center mt-3 ">
-                          <h3 className="Subject-h5">Study Mode : </h3>
-                          <p className="subject-name ms-3">
-                            {" "}
-                            {data?.profile?.mode}
-                          </p>
-                        </div> */}
                           <hr className="hr-notify"></hr>
                           <div className="d-flex justify-content-center mt-3">
                             <button
@@ -98,10 +87,21 @@ export default function AppointmentCard({ datas }) {
                           <hr className="hr-notify"></hr>
 
                           <div className="d-flex align-items-center justify-content-evenly mt-3">
-                            <button className="btn-learn mt-3">
-                              Helping Material
+                            <button
+                              onClick={() => {
+                                setModalFeedback(true);
+                                setTestId(data?.studentdata?._id);
+                              }}
+                              className="btn-learn mt-3"
+                            >
+                              Report Teacher
                             </button>
                           </div>
+                          <ModalFeedBack
+                            id={testId}
+                            show={modalFeedback}
+                            onHide={() => setModalFeedback(false)}
+                          />
                         </div>
                       </div>
                     </Card.Body>
