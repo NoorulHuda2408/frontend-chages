@@ -14,12 +14,16 @@ export default function Searchtutor() {
   const [parent, setParent] = useState(false);
   const [classStudy, setClassStudy] = useState();
   const [subject, setSubject] = useState();
+  const [data, setData] = useState()
+
 
   const [city, setCity] = useState();
   const [gender, setGender] = useState();
   const [mode, setMode] = useState();
-
   const userData = useSelector((state) => state?.signin?.signInData?.data);
+
+
+
   console.log(userData, "this is user data");
   const classes = [
     "Class 1 to 5",

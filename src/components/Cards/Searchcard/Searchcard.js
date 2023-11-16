@@ -15,12 +15,28 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import { toast } from "react-toastify";
+import ModalChat from "../../Modal/ModalChat/ModalChat";
 
 export default function Card1({ data }) {
   const navigate = useNavigate();
   const userData = useSelector((state) => state?.signin?.signInData?.data);
   const [loader, setLoader] = useState(false);
   const [hireShow, setHireShow] = useState();
+  const [modalShow,setModalShow]=useState(false);
+  const [id,setId]=useState("");
+  const [datas, setDatas] = useState()
+
+
+
+  async function getUserMessage(id) {
+    try {
+      const res = await axios.get(`${API_URL}/api/get-messages-student/${id}/${ userData?._id}`);
+      console.log(res?.data?.messages?.messages);
+      setDatas(res?.data?.messages?.messages)
+    } catch (e) {}
+  }
+
+
 
   console.log(data);
   async function HireStudent(id) {
@@ -40,6 +56,12 @@ export default function Card1({ data }) {
   }
   return (
     <>
+    <ModalChat
+    datass={datas}
+    id={id}
+    show={modalShow}
+    onHide={() => setModalShow(false)}
+    />
       {" "}
       <Row className="mt-4 pb-5">
         {data?.length > 0
@@ -102,7 +124,7 @@ export default function Card1({ data }) {
                               </div>
 
                               <div className="btn-1">
-                                <button className="btn-common ">
+                                <button onClick={()=>{setModalShow(true);getUserMessage(item?.userData[0]._id);setId(item?.userData[0]._id)}} className="btn-common ">
                                   Chat With Tutor
                                 </button>
                               </div>
