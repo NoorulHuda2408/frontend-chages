@@ -58,7 +58,7 @@ export default function ModalFeedBack(props) {
             id="contained-modal-title-vcenter"
             className=" ms-auto text-center"
           >
-            Add Packages
+           Report
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -68,8 +68,8 @@ export default function ModalFeedBack(props) {
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label className="label-txt ms-2">Add Feedback</Form.Label>
-                <Form.Control
+                {/* <Form.Label className="label-txt ms-2">Add Feedback</Form.Label> */}
+                {/* <Form.Control
                   onChange={(e) => {
                     setFeedback(e.target.value);
                   }}
@@ -78,7 +78,24 @@ export default function ModalFeedBack(props) {
                   name="datetime"
                   className="inpt-date"
                   autoFocus
-                />
+                /> */}
+                <div style={{display:"flex",marginBottom:"20px",alignItems:"center"}}>
+                  <input name="behavior" style={{marginRight:"20px",width:"20px",backgroundColor:"none"}} type="radio" />
+                  <p style={{marginLeft:"20px"}}>Bad Behaviour</p>
+                </div>
+                <div style={{display:"flex",marginBottom:"20px",alignItems:"center"}}>
+                  <input name="behavior" style={{marginRight:"20px",width:"20px",backgroundColor:"none"}} type="radio" />
+                  <p style={{marginLeft:"20px"}}>Not a good teacher</p>
+                </div>
+                <div style={{display:"flex",marginBottom:"20px",alignItems:"center"}}>
+                  <input name="behavior" style={{marginRight:"20px",width:"20px",backgroundColor:"none"}} type="radio" />
+                  <p style={{marginLeft:"20px"}}>Harasment</p>
+                </div>
+                <div style={{display:"flex",marginBottom:"20px",alignItems:"center"}}>
+                  <input name="behavior" style={{marginRight:"20px",width:"20px",backgroundColor:"none"}} type="radio" />
+                  <p style={{marginLeft:"20px"}}>Not punctual</p>
+                </div>
+                
               </Form.Group>
             </Form>
           </Row>

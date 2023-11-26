@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./index.css";
 import Button from "react-bootstrap/esm/Button";
-import logo from "../../assests/logo.svg";
+import logo from "../../assests/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -22,15 +22,15 @@ const NavbarCustom = () => {
               src={logo}
               className="d-inline-block align-top"
               alt=""
-              width="60"
-              height="60"
+              width="200"
+              height="100"
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link
-                href="#home"
+             
                 className="ms-md-5 NavItems"
                 onClick={() => {
                   navigate("/");
@@ -40,16 +40,13 @@ const NavbarCustom = () => {
               </Nav.Link>
               {!userData && (
                 <>
+                 
                   <Nav.Link href="#link" className="ms-md-3 NavItems">
-                    Courses
+                   Contac Us
                   </Nav.Link>
-                  <Nav.Link href="#home" className="ms-md-3 NavItems">
-                    Careers
-                  </Nav.Link>
-                  <Nav.Link href="#link" className="ms-md-3 NavItems">
-                    Blogs
-                  </Nav.Link>
-                  <Nav.Link href="#link" className="ms-md-3 NavItems">
+                  <Nav.Link  onClick={() => {
+                  navigate("/about");
+                }}  className="ms-md-3 NavItems">
                     About Us
                   </Nav.Link>
                 </>
@@ -152,6 +149,18 @@ const NavbarCustom = () => {
                   className="ms-md-3 NavItems"
                 >
                   Packages
+                </Nav.Link>
+              ) : (
+                ""
+              )}
+               {userData?._id ? (
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/messages");
+                  }}
+                  className="ms-md-3 NavItems"
+                >
+                 Massages
                 </Nav.Link>
               ) : (
                 ""

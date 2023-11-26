@@ -18,6 +18,8 @@ import { useEffect } from "react";
 import EditStudent from "./pages/Student/editProfileStudent/EditStudent";
 import EditTeacher from "./pages/Teacher/editTeacher/EditTeacher";
 import TeacherPackages from "./pages/Teacher/TeacherPackages/TeacherPackages";
+import Messages from "./pages/Teacher/messages/Messages";
+import About from "./pages/About/About";
 
 
 
@@ -58,6 +60,10 @@ function App() {
           <Route exact path="/editProfile" element={<EditStudent/>} />
           <Route exact path="/editMentor" element={<EditTeacher/>} />
           <Route exact path="/teacherPacakages" element={<TeacherPackages/>} />
+          <Route exact path="/messages" element={<Messages/>} />
+          <Route exact path="/about" element={<About/>} />
+
+
 
 
 
