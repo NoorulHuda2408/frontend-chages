@@ -423,7 +423,7 @@ export default function Register() {
                 <Select
                   isMulti
                   options={options}
-                  value={selectedOptions}
+                  value={subject}
                   onChange={(e) => {
                     setSubject(e.value);
                   }}
