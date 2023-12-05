@@ -17,20 +17,17 @@ export default function ModalFeedBack(props) {
 
   const userData = useSelector((state) => state?.signin?.signInData?.data);
 
-  const formValidation = () => {
-    if (!feedback) {
-      toast.error("Please Add feedback messages");
-      return false;
-    }
-  };
+  // const formValidation = () => {
+  //   if (!feedback) {
+  //     toast.error("Please Add feedback messages");
+  //     return false;
+  //   }
+  // };
 
   async function handleClick(e) {
     e.preventDefault();
 
-    const res = formValidation();
-    if (res === false) {
-      return false;
-    }
+    
 
     try {
       const data = await axios.post(`${API_URL}/api/addFeedback/${props.id}`, {
