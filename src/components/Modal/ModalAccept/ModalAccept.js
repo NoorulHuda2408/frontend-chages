@@ -1,37 +1,44 @@
-import Modal from "react-bootstrap/Modal";
-import { Row, Col, Container } from "react-bootstrap";
-import "./ModalAccept.css";
-import Form from "react-bootstrap/Form";
+import React, { useState } from "react";
+import { Modal, Row, Form } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
-
 import { API_URL } from "../../../service/client";
-import { useState } from "react";
 
 export default function ModalAccept(props) {
-  console.log(props)
   const [time, setTime] = useState("");
+
   async function approved() {
     if (!time) {
-      toast.error("please add appiontment time");
+      toast.error("Please add appointment time");
       return false;
     }
+
     const res = await axios.post(
       `${API_URL}/api/approveNotification/${props?.id}`,
       {
         time: time,
       }
     );
-    console.log(res);
+
     if (res.status === 200) {
-      console.log(res);
-      console.log("Approved successfully");
       toast.success("Approved successfully");
       window.location.reload();
     } else {
       toast.error("Something went wrong");
     }
   }
+
+  const handleDateChange = (e) => {
+    const selectedDate = new Date(e.target.value);
+    const currentDate = new Date();
+
+    if (selectedDate >= currentDate) {
+      setTime(e.target.value);
+    } else {
+      toast.error("Please select today or a future date.");
+    }
+  };
+
   return (
     <>
       <Modal
@@ -43,7 +50,7 @@ export default function ModalAccept(props) {
         <Modal.Header closeButton className="modal-main">
           <Modal.Title
             id="contained-modal-title-vcenter"
-            className=" ms-auto text-center"
+            className="ms-auto text-center"
           >
             Time Slot
           </Modal.Title>
@@ -51,17 +58,12 @@ export default function ModalAccept(props) {
         <Modal.Body>
           <Row>
             <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label className="label-txt ms-2">
                   Available Time
                 </Form.Label>
                 <Form.Control
-                  onChange={(e) => {
-                    setTime(e.target.value);
-                  }}
+                  onChange={handleDateChange}
                   type="datetime-local"
                   id="datetime"
                   name="datetime"
@@ -74,7 +76,7 @@ export default function ModalAccept(props) {
           <Row>
             <div className="d-flex justify-content-end">
               <button
-                className="btn-submit mt-3 "
+                className="btn-submit mt-3"
                 onClick={() => {
                   props.onHide();
                   approved();
@@ -82,6 +84,33 @@ export default function ModalAccept(props) {
               >
                 Submit
               </button>
+              <button
+                className="btn-submit mt-3"
+                onClick={() => {
+                  props.onHide();
+                  approved();
+                }}
+              >
+                cancel
+              </button>
+
+              {/* <button
+                className="btn-cancel mt-3 me-2"
+                onClick={props.onHide}
+              >
+                Cancel
+              </button>
+              
+                className="btn-submit mt-3"
+                onClick={() => {
+                  props.onHide();
+                  approved();
+                }}
+
+
+
+
+               */}
             </div>
           </Row>
         </Modal.Body>

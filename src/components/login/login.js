@@ -47,7 +47,7 @@ function Login() {
         setLoader(false);
         if (res?.payload?.data?.role === 0) {
           if (res?.payload?.data?.profileUpdated) {
-            toast.success("Login Susseccfully");
+            toast.success("Login Successfully");
             navigate("/");
           } else {
             toast.success("Profile Update Your Profile to Continue.");
@@ -114,7 +114,7 @@ function Login() {
 
       <div className="d-flex justify-content-between align-items-end mt-4">
         <div>
-          <p className="forget-p">Forget Password ?</p>
+          {/* <p className="forget-p">Forget Password ?</p> */}
         </div>
 
         <div>

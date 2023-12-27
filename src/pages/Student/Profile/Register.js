@@ -86,10 +86,10 @@ export default function Register() {
     "Taxila",
     "Rawalpindi",
     "Islamabad",
-    "Sialkot",
-    "Jehlum",
+   
+    
     "Wah Cantt",
-    "Multan",
+    
   ];
   const Cityoption = City.map((subject) => ({
     value: subject,
@@ -99,7 +99,7 @@ export default function Register() {
   const genderOptions = [
     { value: "Male", label: "Male" },
     { value: "Female", label: "Female" },
-    { value: "Others", label: "Others" },
+    // { value: "Others", label: "Others" },
   ];
 
   const provinceOptions = [
@@ -117,7 +117,7 @@ export default function Register() {
   ];
 
   const classes = [
-    "Class 1 to 5",
+    // "Class 1 to 5",
     "Class 6 to 8",
     "Matric",
     "FSC (Pre-engineering",
@@ -267,33 +267,87 @@ export default function Register() {
               <div className="mt-4">
                 <label className="label-form required-label">Contact No</label>
                 <div className="inputdiv">
-                  <input
+                  {/* <input
                     type="tel"
                     placeholder="Enter Phone No"
                     name="mobile"
                     onInput={(e) => {
                       // Remove any non-numeric characters from the input
-                      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                       e.target.value = e.target.value.replace( /^\d{10}$/,"");
                     }}
                     onChange={(e) => {
                       setPhoneNo(e.target.value);
                     }}
-                  />
+                  /> */}
+                  <input
+  type="tel"
+  placeholder="Enter Phone No"
+  name="mobile"
+  onInput={(e) => {
+    // Remove any non-numeric characters from the input
+    e.target.value = e.target.value.replace(/\D/g, '');
+
+    // Limit the length to 11 digits
+    if (e.target.value.length > 11) {
+      e.target.value = e.target.value.slice(0, 11);
+    }
+  }}
+  onChange={(e) => {
+    // Limit the length to 11 digits
+    if (e.target.value.length <= 11) {
+      setPhoneNo(e.target.value);
+    }
+  }}
+/>
+
                 </div>
               </div>
 
               <div className="mt-4">
                 <label className="label-form required-label">Age</label>
                 <div className="inputdiv">
-                  <input
-                    type="number"
-                    placeholder="Enter Age"
-                    name="age"
-                    required
-                    onChange={(e) => {
-                      setage(e.target.value);
-                    }}
-                  />
+                <input
+  type="number"
+  placeholder="Enter Age"
+  name="age"
+  required
+  onChange={(e) => {
+    // Remove non-digit characters
+    e.target.value = e.target.value.replace(/\D/g, '');
+
+    // Convert the input value to an integer
+    const enteredAge = parseInt(e.target.value, 10);
+
+    // Check if the entered value is a valid non-negative integer
+    if (!isNaN(enteredAge) && enteredAge >= 0) {
+      setage(enteredAge);
+    } else {
+      setage(''); // or handle the error in a way that makes sense for your application
+    }
+  }}
+  onKeyDown={(e) => {
+    // Prevent the input of the minus sign (-)
+    if (e.key === '-') {
+      e.preventDefault();
+    }
+  }}
+/>
+
+
+                 
+                  {/* <input
+      type="number"
+      placeholder="Enter Age"
+      name="age"
+      required
+      onChange={(e) => {
+        const enteredValue = e.target.value;
+        const sanitizedValue = Math.max(0, Math.min(999, parseInt(enteredValue, 10))).toString();
+        setage(sanitizedValue);
+      }}
+      min="0" // Ensure the entered value is not negative
+      max="999" // Limit the entered value to 3 digits
+    /> */}
                 </div>
               </div>
 

@@ -19,12 +19,13 @@ const TOTC = () => {
         <div className="totcImageSec row justify-content-center mt-3  ">
           <div className='totc1 col-md-4 d-flex flex-column text-center align-items-center justify-content-center  mx-4  '>
             <h1 className='classHeading'> FOR INSTRUCTORS</h1>  
-           <button type="button" className="CLassButton " >Start a class today</button>
+           {/* <button type="button" className="CLassButton " >Start a class today</button> */}
 
           </div>
           <div className='totc2  col-md-4 d-flex flex-column text-center align-items-center justify-content-center mx-4 '> 
           <h1 className='studentHeading'>  FOR STUDENTS</h1>  
-           <button type="button" className="CLassButton " >Start a class today</button></div>
+           {/* <button type="button" className="CLassButton " >Start a class today</button> */}
+           </div>
         </div>
     </div>
   )

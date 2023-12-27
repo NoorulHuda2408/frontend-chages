@@ -56,10 +56,8 @@ export default function Searchtutor() {
     "Taxila",
     "Rawalpindi",
     "Islamabad",
-    "Sialkot",
-    "Jehlum",
     "Wah Cantt",
-    "Multan",
+
   ];
   const Cityoptions = commonCity.map((subject) => ({
     value: subject,

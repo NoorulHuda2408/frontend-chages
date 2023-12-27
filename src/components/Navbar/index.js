@@ -41,9 +41,13 @@ const NavbarCustom = () => {
               {!userData && (
                 <>
                  
-                  <Nav.Link href="#link" className="ms-md-3 NavItems">
-                   Contac Us
+                  <Nav.Link onClick={() => {
+                  navigate("/about");
+                }}href="#link" className="ms-md-3 NavItems">
+                   Contact Us
                   </Nav.Link>
+                  
+                  
                   <Nav.Link  onClick={() => {
                   navigate("/about");
                 }}  className="ms-md-3 NavItems">

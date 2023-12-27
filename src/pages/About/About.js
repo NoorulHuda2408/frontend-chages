@@ -14,14 +14,12 @@ export default function About() {
           <div className="allText aboveText">
             <p className="text-blk headingText">Our Mission</p>
             <p className="text-blk subHeadingText">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            At Tuition Recommender, our mission is to empower students.
             </p>
             <p className="text-blk description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum
-              pulvinar ullamcorper suspendisse ac eget. Pellentesque tempus leo
-              in ullamcorper quis vestibulum ligula elementum ut.
+            We believe in fostering a supportive learning environment and aim to make education more accessible, engaging, and tailored to individual needs. Our commitment is to bridge the gap between students and tutors, creating a seamless platform for knowledge exchange.
             </p>
-            <button className="explore">Explore</button>
+            {/* <button className="explore">Explore</button> */}
           </div>
         </div>
         <div className="responsive-container-block Container bottomContainer">
@@ -32,14 +30,17 @@ export default function About() {
           <div className="allText bottomText">
             <p className="text-blk headingText">Our Vision</p>
             <p className="text-blk subHeadingText">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Our vision is to democratize education with accessible, high-quality learning
             </p>
             <p className="text-blk description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum
-              pulvinar ullamcorper suspendisse ac eget. Pellentesque tempus leo
-              in ullamcorper quis vestibulum ligula elementum ut.
+              {"Our user-friendly platform connects students with skilled tutors, inspiring and guiding them on their educational journey. With innovative solutions, we aim to be the go-to platform for academic support, empowering students and enabling tutors to make a positive impact on the next generation."
+                
+              
+              }
+
+
             </p>
-            <button className="explore">Explore</button>
+            {/* <button className="explore">Explore</button> */}
           </div>
         </div>
       </div>

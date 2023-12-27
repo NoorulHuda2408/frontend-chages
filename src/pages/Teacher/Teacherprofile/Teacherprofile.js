@@ -182,6 +182,9 @@ export default function Teacherprofile() {
                   <label for="lname">Phone No</label>
                 </div>
                 <div class="grid-65">
+                  
+                  
+                  
                   <input
                     value={phoneNo}
                     onChange={(e) => {
@@ -193,13 +196,71 @@ export default function Teacherprofile() {
                     placeholder="Enter Your Phone no"
                     onInput={(e) => {
                       // Remove any non-numeric characters from the input
-                      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                      e.target.value = e.target.value.replace(/\D/g, '');
+                  
+                      // Limit the length to 11 digits
+                      if (e.target.value.length > 11) {
+                        e.target.value = e.target.value.slice(0, 11);
+                      }
                     }}
+                   
+                    // onInput={(e) => {
+                    //   // Remove any non-numeric characters from the input
+                    //   e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    // }}
                   />
+
+
+
+{/* <input
+  type="tel"
+  placeholder="Enter Phone No"
+  name="mobile"
+  onInput={(e) => {
+    // Remove any non-numeric characters from the input
+    e.target.value = e.target.value.replace(/\D/g, '');
+
+    // Limit the length to 11 digits
+    if (e.target.value.length > 11) {
+      e.target.value = e.target.value.slice(0, 11);
+    }
+  }}
+  onChange={(e) => {
+    // Limit the length to 11 digits
+    if (e.target.value.length <= 11) {
+      setPhoneNo(e.target.value);
+    }
+  }}
+/> */}
                 </div>
               </fieldset>
 
+
               <fieldset>
+  <div className="grid-35">
+    <label htmlFor="age">Age</label>
+  </div>
+  <div className="grid-65">
+    <input
+      value={age}
+      onChange={(e) => {
+        // Ensure the entered value is a non-negative integer and limit to 3 digits
+        const sanitizedValue = Math.max(0, parseInt(e.target.value, 10)).toString().slice(0, 3);
+        setage(sanitizedValue);
+      }}
+      type="number"
+      id="age"
+      tabIndex="2"
+      placeholder="Enter Your Age"
+      min="0"  // Ensure the entered value is not negative
+      max="999"  // Limit the entered value to 3 digits
+      required
+    />
+  </div>
+</fieldset>
+
+
+              {/* <fieldset>
                 <div className="grid-35">
                   <label for="lname">Age</label>
                 </div>
@@ -215,7 +276,7 @@ export default function Teacherprofile() {
                     placeholder="Enter Your Age"
                   />
                 </div>
-              </fieldset>
+              </fieldset> */}
 
               <fieldset>
                 <div className="grid-35">
@@ -258,7 +319,7 @@ export default function Teacherprofile() {
                     />
                     Female
                   </label>
-                  <label style={{ display: "flex", alignItems: "center" }}>
+                  {/* <label style={{ display: "flex", alignItems: "center" }}>
                     <input
                       onChange={(e) => {
                         setGender(e.target.value);
@@ -269,11 +330,38 @@ export default function Teacherprofile() {
                       className="grid-75-input"
                     />
                     Other
-                  </label>
+                  </label> */}
                 </div>
               </fieldset>
 
+
+
+
               <fieldset>
+  <div className="grid-35">
+    <label htmlFor="cnic">CNIC</label>
+  </div>
+  <div className="grid-65">
+    <input
+      value={cnic}
+      onChange={(e) => {
+        // Ensure the entered value contains only up to 13 digits and no alphabets
+        const sanitizedValue = e.target.value.replace(/[^0-9]/g, '').slice(0, 13);
+        setCnic(sanitizedValue);
+      }}
+      type="text"  // Change type to text
+      id="cnic"
+      tabIndex="2"
+      placeholder="Enter Your CNIC Without(-)"
+      pattern="[0-9]{1,13}"  // Use pattern to allow only digits and limit to 13 digits
+      title="Please enter a valid CNIC (up to 13 digits)"
+      required
+    />
+  </div>
+</fieldset>
+
+
+              {/* <fieldset>
                 <div className="grid-35">
                   <label for="lname">CNIC</label>
                 </div>
@@ -289,7 +377,7 @@ export default function Teacherprofile() {
                     placeholder="Enter Your Cnic"
                   />
                 </div>
-              </fieldset>
+              </fieldset> */}
 
               <fieldset>
                 <div className="grid-35">
